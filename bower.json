@@ -9,10 +9,12 @@
     "angular-resource": "^1.4.0",
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
-    "angular-touch": "^1.4.0"
+    "angular-touch": "^1.4.0",
+    "jquery-backstretch": "backstretch#^2.0.4"
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.0"
+    "angular-mocks": "^1.4.0",
+    "jquery-backstretch": "backstretch#^2.0.4"
   },
   "appPath": "app",
   "moduleName": "feedMeWebApp",
