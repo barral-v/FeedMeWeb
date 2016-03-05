@@ -29,6 +29,11 @@ angular
         controller: 'AboutCtrl',
         controllerAs: 'about'
       })
+      .when('/loginroute', {
+        templateUrl: 'views/loginroute.html',
+        controller: 'LoginrouteCtrl',
+        controllerAs: 'loginroute'
+      })
       .otherwise({
         redirectTo: '/'
       });
