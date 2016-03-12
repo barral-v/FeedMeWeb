@@ -16,10 +16,10 @@ app.controller('LoginrouteCtrl', function ($scope) {
       'Karma'
     ];
     // function to submit the form after all validation has occurred            
-    $scope.submitForm = function() {
+    $scope.submitForm = function(isValid) {
 
         // check to make sure the form is completely valid
-        if ($scope.userForm.$valid) {
+        if (isValid) {
             alert('our form is amazing');
         }
 

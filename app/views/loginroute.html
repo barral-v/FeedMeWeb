@@ -1,16 +1,25 @@
         <!-- Top content -->
         <div class="top-content">
         	
+            <!-- Apply background -->
             <div class="inner-bg">
+
+                <!-- page content -->
                 <div class="container">
+
+                    <!-- title -->
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><strong>Feed Me</strong></h1>
+                            <h1 class='green'><strong>Feed Me</strong></h1>
                         </div>
                     </div>
+
+                    <!-- box -->
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
-                        	<div class="form-top">
+                        	
+                            <!-- top of form -->
+                            <div class="form-top">
                         		<div class="form-top-left">
                         			<h3>Login</h3>
                             		<p>Enter your username and password to log on:</p>
@@ -19,18 +28,28 @@
                         			<i class="fa fa-lock"></i>
                         		</div>
                             </div>
+
+
+                            <!-- FORM -->
                             <div class="form-bottom">
-			                    <form role="form" action="" method="post" class="login-form">
+			                    <form name="userForm" ng-submit="submitForm(userForm.$valid)" novalidate>
+
+                                    
+                                    <!-- USERNAME -->
 			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="user.username"  ng-minlength="3" ng-maxlength="8" required>
 			                        </div>
+
+                                    <!-- PASSWORD -->
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+			                        	<input type="password" name="password" placeholder="Password..." class="form-control" ng-model="user.password" id="form-password" required>
 			                        </div>
-			                        <button type="submit" class="btn">Sign in!</button>
-			                    </form>
+
+                                    <!-- VALIDATION -->
+			                        <button type="submit" class="btn" ng-disabled="userForm.$invalid">Sign in!</button>
+			                    
+
+                                </form>
 		                    </div>
                         </div>
                     </div>
