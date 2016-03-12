@@ -36,17 +36,20 @@
 
                                     
                                     <!-- USERNAME -->
-			                    	<div class="form-group">
+			                    	<div class="form-group" ng-class="{ 'has-error' : userForm.username.$invalid && !userForm.username.$pristine  && submitted }">
 			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="user.username"  ng-minlength="3" ng-maxlength="8" required>
+                                        <p ng-show="userForm.username.$error.minlength && submitted " class="help-block">Username is too short.</p>
+                                        <p ng-show="userForm.username.$error.maxlength && submitted " class="help-block">Username is too long.</p>
 			                        </div>
 
                                     <!-- PASSWORD -->
-			                        <div class="form-group">
+			                        <div class="form-group" ng-class="{ 'has-error' : userForm.password.$invalid && !userForm.password.$pristine  && submitted }">
 			                        	<input type="password" name="password" placeholder="Password..." class="form-control" ng-model="user.password" id="form-password" required>
+                                        <p ng-show="userForm.password.$invalid && !userForm.password.$pristine && submitted " class="help-block">You password is required.</p>
 			                        </div>
 
                                     <!-- VALIDATION -->
-			                        <button type="submit" class="btn" ng-disabled="userForm.$invalid">Sign in!</button>
+			                        <button type="submit" class="btn" >Sign in!</button>
 			                    
 
                                 </form>
