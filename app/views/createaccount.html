@@ -21,42 +21,55 @@
                             <!-- top of form -->
                             <div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>Login</h3>
-                            		<p>Enter your username and password to log on:</p>
-                        		</div>
-                        		<div class="form-top-right">
-                        			<i class="fa fa-lock"></i>
+                        			<h3>Create an account</h3>
                         		</div>
                             </div>
 
 
                             <!-- FORM -->
                             <div class="form-bottom">
-			                    <form name="loginForm" ng-submit="submitForm(loginForm.$valid)" novalidate>
+			                    <form name="createForm" ng-submit="submitForm(createForm.$valid)" novalidate>
 
                                     
+                                    <!-- FIRSTNAME -->
+                                    <div class="form-group">
+                                        <input type="text" name="firstname" placeholder="First Name..." class="form-control" ng-model="firstname">
+                                    </div>
+
+                                    <!-- LASTNAME -->
+                                    <div class="form-group">
+                                        <input type="text" name="lastname" placeholder="Last Name..." class="form-control" ng-model="lastname">
+                                    </div>
+
                                     <!-- USERNAME -->
-			                    	<div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && loginForm.username.$touched }">
+			                    	<div class="form-group" ng-class="{ 'has-error' : createForm.username.$invalid && !createForm.username.$pristine  && createForm.username.$touched }">
 			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="username"  ng-minlength="3" ng-maxlength="8" required>
-                                        <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$touched">
+                                        <div ng-messages="createForm.username.$error" ng-show="createForm.username.$touched">
                                             <p class="help-block" ng-message="minlength">Your username is too short.</p>
                                             <p class="help-block" ng-message="maxlength">Your username is too long.</p>
                                             <p class="help-block" ng-message="required">Your username is required.</p>
                                         </div>
 			                        </div>
 
+                                    <!-- EMAIL -->
+                                    <div class="form-group" ng-class="{ 'has-error' : createForm.email.$invalid && !createForm.email.$pristine  && createForm.email.$touched }">
+                                        <input type="text" name="email" placeholder="Email..." class="form-control" ng-model="email" required>
+                                        <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
+                                            <p class="help-block" ng-message="invalid">Please enter a valid email</p>
+                                            <p class="help-block" ng-message="required">Your email is required.</p>
+                                        </div>
+                                    </div>
+
                                     <!-- PASSWORD -->
-			                        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && loginForm.password.$touched }">
+			                        <div class="form-group" ng-class="{ 'has-error' : createForm.password.$invalid && !createForm.password.$pristine  && createForm.password.$touched }">
 			                        	<input type="password" name="password" placeholder="Password..." class="form-control" ng-model="password" id="form-password" required>
-                                        <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
+                                        <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
                                             <p class="help-block" ng-message="required">Your password is required.</p>
                                         </div>
 			                        </div>
 
-                                    
-
                                     <!-- VALIDATION -->
-			                        <button type="submit" class="btn" >Sign in!</button>
+			                        <button type="submit" class="btn" >Create!</button>
 			                    
 
                                 </form>

@@ -15,7 +15,8 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ngMessages'
   ])
   .config(function ($routeProvider) {
     $routeProvider
@@ -23,6 +24,11 @@ angular
         templateUrl: 'views/loginroute.html',
         controller: 'LoginrouteCtrl',
         controllerAs: 'loginroute'
+      })
+      .when('/createaccount', {
+        templateUrl: 'views/createaccount.html',
+        controller: 'CreateaccountCtrl',
+        controllerAs: 'createaccount'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
