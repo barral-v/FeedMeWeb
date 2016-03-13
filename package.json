@@ -41,5 +41,7 @@
   "scripts": {
     "test": "karma start test/karma.conf.js"
   },
-  "dependencies": {}
+  "dependencies": {
+    "angular-messages": "^1.5.0"
+  }
 }
