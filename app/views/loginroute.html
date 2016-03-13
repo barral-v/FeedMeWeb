@@ -37,10 +37,8 @@
                                     
                                     <!-- USERNAME -->
 			                    	<div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && loginForm.username.$touched }">
-			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="username"  ng-minlength="3" ng-maxlength="8" required>
+			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="username" required>
                                         <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$touched">
-                                            <p class="help-block" ng-message="minlength">Your username is too short.</p>
-                                            <p class="help-block" ng-message="maxlength">Your username is too long.</p>
                                             <p class="help-block" ng-message="required">Your username is required.</p>
                                         </div>
 			                        </div>
@@ -64,10 +62,10 @@
                         <div class="col-sm-6 col-sm-offset-3 social-login">
                         	<h3>...or login with:</h3>
                         	<div class="social-login-buttons">
-<!-- 	                        	<a class="btn btn-link-2" href="#">
-	                        		<i class="fa fa-facebook"></i> Facebook
+	                            <a class="btn btn-link-2" href="#/createaccount">
+	                        		Create an account
 	                        	</a>
-	                        	<a class="btn btn-link-2" href="#">
+	                        	<!-- <a class="btn btn-link-2" href="#">
 	                        		<i class="fa fa-twitter"></i> Twitter
 	                        	</a> -->
 	                        	<a class="btn btn-link-2" href="#">

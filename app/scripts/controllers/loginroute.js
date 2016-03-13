@@ -15,7 +15,7 @@ app.controller('LoginrouteCtrl', function ($scope) {
       'AngularJS',
       'Karma'
     ];
-
+    console.log($scope);
     // function to submit the form after all validation has occurred            
   	$scope.submitForm = function(isValid) {
 
