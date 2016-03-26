@@ -30,6 +30,21 @@ angular
         controller: 'CreateaccountCtrl',
         controllerAs: 'createaccount'
       })
+      .when('/map', {
+        templateUrl: 'views/map.html',
+        controller: 'MapCtrl',
+        controllerAs: 'feedmemap'
+      })
+      .when('/createdish', {
+        templateUrl: 'views/createdish.html',
+        controller: 'CreatedishCtrl',
+        controllerAs: 'createdish'
+      })
+      .when('/detaildish', {
+        templateUrl: 'views/createaccount.html',
+        controller: 'CreateaccountCtrl',
+        controllerAs: 'createaccount'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
