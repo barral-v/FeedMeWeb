@@ -1,0 +1,26 @@
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <!-- Apply background -->
+            <div class="inner-bg">
+
+                <!-- page content -->
+                <div class="container">
+                    <form name="dishForm" ng-submit="submitForm(dishForm.$valid)" novalidate>
+                        <!-- button -->
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <input name="photo" type="file" id="photo" file-model="fileToUpload" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+                            </div>
+                        </div>                    
+                    </form>
+                </div>
+            </div>
+            
+        </div>

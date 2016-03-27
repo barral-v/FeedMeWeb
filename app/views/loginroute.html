@@ -32,12 +32,12 @@
 
                             <!-- FORM -->
                             <div class="form-bottom">
-			                    <form name="loginForm" ng-submit="submitForm(loginForm.$valid)" novalidate>
+			                    <form name="loginForm" ng-submit="submit(loginForm.$valid)">
 
                                     
                                     <!-- USERNAME -->
 			                    	<div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && loginForm.username.$touched }">
-			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="username" required>
+			                        	<input type="text" name="username" placeholder="Username..." class="form-control" ng-model="user.username" required>
                                         <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$touched">
                                             <p class="help-block" ng-message="required">Your username is required.</p>
                                         </div>
@@ -45,7 +45,7 @@
 
                                     <!-- PASSWORD -->
 			                        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && loginForm.password.$touched }">
-			                        	<input type="password" name="password" placeholder="Password..." class="form-control" ng-model="password" id="form-password" required>
+			                        	<input type="password" name="password" placeholder="Password..." class="form-control" ng-model="user.password"required>
                                         <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
                                             <p class="help-block" ng-message="required">Your password is required.</p>
                                         </div>

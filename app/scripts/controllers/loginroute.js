@@ -9,20 +9,27 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('LoginrouteCtrl', function ($scope) {
+app.controller('LoginrouteCtrl', ['$scope', '$http', function ($scope, $http) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
+    $scope.TESTVAR="test";
     // function to submit the form after all validation has occurred            
-  	$scope.submitForm = function(isValid) {
-
+  	$scope.submit = function(isValid) {
+      console.log("hello");
 	    // check to make sure the form is completely valid
 	    if (isValid) {
-	      alert('our form is amazing');
+        var user = $scope.user;
+        if (user.username == "admin" && user.password == "admin"){
+          alert('ok');
+        }
+        else {
+          alert('ko');
+        }
 	    }
 
   	};
-  });
+  }]);
 
