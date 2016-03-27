@@ -16,9 +16,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'ngMessages'
+    'ngMessages',
+    'uiGmapgoogle-maps'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/loginroute.html',
@@ -53,4 +55,9 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+    $locationProvider.html5Mode(false).hashPrefix('*');
+    // uiGmapGoogleMapApiProvider.configure({
+    //     key: 'AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA',
+    //     libraries: 'weather,geometry,visualization'
+    // });
   });

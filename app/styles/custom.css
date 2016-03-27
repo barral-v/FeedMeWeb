@@ -4,3 +4,6 @@
 
 .angular-google-map-container { height: 400px; }
 
+#map {
+	height: 500px;
+}
