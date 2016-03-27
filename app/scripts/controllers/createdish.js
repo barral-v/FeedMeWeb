@@ -9,7 +9,7 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('LoginrouteCtrl', function ($scope) {
+app.controller('CreatedishCtrl', function ($scope) {
     this.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
