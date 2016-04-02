@@ -23,7 +23,7 @@ app.controller('MapCtrl', ['$scope', '$http', function ($scope, $http) {
         });
       }
     $scope.listMarkers = [
-      {latitude: 48.8307635, longitude: 2.3206993, title: "M1", 'id': 1, 'options': {labelAnchor:'12 60', 'labelContent': "MARKER 1"}},
-      {latitude: 48.8310, longitude: 2.32030, title: "M2", 'id': 2, 'options': {labelAnchor:'12 60', 'labelContent': "MARKER 2"}}
+      {latitude: 48.8307635, longitude: 2.3206993, title: "M1", 'icon': ' http://icons.iconarchive.com/icons/fatcow/farm-fresh/32/rainbow-icon.png', 'id': 1, 'options': {labelClass: 'maplabel', labelAnchor:'12 60', 'labelContent': "MARKER 1"}},
+      {latitude: 48.8310, longitude: 2.32030, title: "M2", 'icon': ' http://icons.iconarchive.com/icons/fatcow/farm-fresh/32/rainbow-icon.png', 'id': 2, 'options': {labelClass: 'maplabel', labelAnchor:'12 60', 'labelContent': "MARKER 2"}}
     ];
   }]);
