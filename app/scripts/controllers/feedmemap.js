@@ -9,18 +9,14 @@
  */
 var app = angular.module('feedMeWebApp');
  
-<<<<<<< HEAD
-app.controller('MapCtrl', ['$scope', '$http', function ($scope, $http) {
-    $scope.map = { center: { latitude: 48.831451, longitude: 2.3203403 }, zoom: 15, options: {scrollwheel: false, zoomControl: false, streetViewControl: false, disableDoubleClickZoom: true}};
-=======
+
 app.controller('MapCtrl', function ($scope, $http, $location) {
 
     var clickMarker = function(){
       $location.path('/').replace();
     };
 
-    $scope.map = { center: { latitude: 48.831451, longitude: 2.3203403 }, zoom: 15 };
->>>>>>> origin/master
+    $scope.map = { center: { latitude: 48.831451, longitude: 2.3203403 }, zoom: 15, options: {scrollwheel: false, zoomControl: false, streetViewControl: false, disableDoubleClickZoom: true}};
     $scope.initMap = function () {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
