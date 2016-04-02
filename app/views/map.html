@@ -15,14 +15,13 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-sm-12" id="map">
-                            <!-- <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
+                            <ui-gmap-google-map center='map.center' zoom='map.zoom'>
+                                <ui-gmap-markers models="listMarkers" coords="'self'" icon="'icon'">
+                                </ui-gmap-markers>
+                            </ui-gmap-google-map>
                         </div>
                     </div>
                 </div>
             </div>
             
         </div>
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA&callback=initMap"
-    async defer></script>
