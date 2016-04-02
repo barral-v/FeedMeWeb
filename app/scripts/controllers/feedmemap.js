@@ -16,7 +16,7 @@ app.controller('MapCtrl', function ($scope, $http, $location) {
       $location.path('/').replace();
     };
 
-    $scope.map = { center: { latitude: 48.831451, longitude: 2.3203403 }, zoom: 15, options: {scrollwheel: false, zoomControl: false, streetViewControl: false, disableDoubleClickZoom: true}};
+    $scope.map = { center: { latitude: 48.831451, longitude: 2.3203403 }, zoom: 14, options: {scrollwheel: false, zoomControl: false, streetViewControl: false, disableDoubleClickZoom: true}};
     $scope.initMap = function () {
         var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
