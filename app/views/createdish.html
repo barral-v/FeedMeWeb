@@ -16,9 +16,9 @@
 
                                 <!-- DISH NAME -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.name.$invalid && dishForm.name.$touched }">
-                                    <input type="text" name="name" placeholder="Name" class="form-control" ng-model="dish.name" required>
+                                    <input type="text" name="name" placeholder="Nom" class="form-control" ng-model="dish.name" required>
                                     <div ng-messages="dishForm.name.$error" ng-show="dishForm.name.$touched">
-                                        <p class="help-block" ng-message="required">You must name your dish.</p>
+                                        <p class="help-block" ng-message="required">Veuillez donner un nom à votre plat</p>
                                     </div>
                                 </div>
 
@@ -26,31 +26,31 @@
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.description.$invalid && dishForm.description.$touched }">
                                     <input type="text" name="description" placeholder="Description" class="form-control" ng-model="dish.description" required>
                                     <div ng-messages="dishForm.description.$error" ng-show="dishForm.description.$touched">
-                                        <p class="help-block" ng-message="required">Describe your dish.</p>
+                                        <p class="help-block" ng-message="required">Decrivez votre plat</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH PRICE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.price.$invalid && dishForm.price.$touched }">
-                                    <input type="number" name="price" placeholder="Price" class="form-control" ng-model="dish.price" required>
+                                    <input type="number" name="price" placeholder="Prix par part" class="form-control" ng-model="dish.price" required>
                                     <div ng-messages="dishForm.price.$error" ng-show="dishForm.price.$touched">
-                                        <p class="help-block" ng-message="required">Set a price for your dish.</p>
+                                        <p class="help-block" ng-message="required">Donnez un prix par part à votre plat</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH NB PIECE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.nbPiece.$invalid && dishForm.nbPiece.$touched }">
-                                    <input type="number" name="nbPiece" placeholder="Number of Pieces" class="form-control" ng-model="dish.nbPiece" required>
+                                    <input type="number" name="nbPiece" placeholder="Nombre de parts" class="form-control" ng-model="dish.nbPiece" required>
                                     <div ng-messages="dishForm.nbPiece.$error" ng-show="dishForm.nbPiece.$touched">
-                                        <p class="help-block" ng-message="required">You must tell how many pieces you sell.</p>
+                                        <p class="help-block" ng-message="required">Combien de part mettez vous en vente</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH SIZE PIECE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.sizePiece.$invalid && dishForm.sizePiece.$touched }">
-                                    <input type="number" name="sizePiece" placeholder="Size of Pieces" class="form-control" ng-model="dish.sizePiece" required>
+                                    <input type="number" name="sizePiece" placeholder="Taille d'une part" class="form-control" ng-model="dish.sizePiece" required>
                                     <div ng-messages="dishForm.sizePiece.$error" ng-show="dishForm.sizePiece.$touched">
-                                        <p class="help-block" ng-message="required">You must tell how many gram is a piece.</p>
+                                        <p class="help-block" ng-message="required">Donnez la quantité d'une part de votre plat</p>
                                     </div>
                                 </div>
 
