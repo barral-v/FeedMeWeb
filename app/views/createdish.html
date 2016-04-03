@@ -24,7 +24,7 @@
 
                                 <!-- DISH DESCRIPTION -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.description.$invalid && dishForm.description.$touched }">
-                                    <input type="text" name="description" placeholder="Description" class="form-control" ng-model="dish.description" required>
+                                    <textarea style="height: 100px" name="description" placeholder="Description" class="form-control" ng-model="dish.description" required></textarea>
                                     <div ng-messages="dishForm.description.$error" ng-show="dishForm.description.$touched">
                                         <p class="help-block" ng-message="required">Decrivez votre plat</p>
                                     </div>
