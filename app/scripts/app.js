@@ -42,10 +42,10 @@ angular
         controller: 'CreatedishCtrl',
         controllerAs: 'createdish'
       })
-      .when('/detaildish', {
-        templateUrl: 'views/createaccount.html',
-        controller: 'CreateaccountCtrl',
-        controllerAs: 'createaccount'
+      .when('/detaildish/:dishId', {
+        templateUrl: 'views/detaildish.html',
+        controller: 'DetaildishCtrl',
+        controllerAs: 'detaildish'
       })
       .when('/about', {
         templateUrl: 'views/about.html',

@@ -33,17 +33,17 @@
                                     
                                     <!-- FIRSTNAME -->
                                     <div class="form-group">
-                                        <input type="text" name="firstname" placeholder="Prénom..." class="form-control" ng-model="firstname">
+                                        <input type="text" name="firstname" placeholder="Prénom..." class="form-control" ng-model="user.firstname">
                                     </div>
 
                                     <!-- LASTNAME -->
                                     <div class="form-group">
-                                        <input type="text" name="lastname" placeholder="Nom..." class="form-control" ng-model="lastname">
+                                        <input type="text" name="lastname" placeholder="Nom..." class="form-control" ng-model="user.lastname">
                                     </div>
 
                                     <!-- USERNAME -->
 			                    	<div class="form-group" ng-class="{ 'has-error' : createForm.username.$invalid && createForm.username.$touched }">
-			                        	<input type="text" name="username" placeholder="Nom d'utilisateur..." class="form-control" ng-model="username" required>
+			                        	<input type="text" name="username" placeholder="Nom d'utilisateur..." class="form-control" ng-model="user.username" required>
                                         <div ng-messages="createForm.username.$error" ng-show="createForm.username.$touched">
                                             <p class="help-block" ng-message="required">Veuillez entrer un nom d'utilisateur</p>
                                         </div>
@@ -51,7 +51,7 @@
 
                                     <!-- EMAIL -->
                                     <div class="form-group" ng-class="{ 'has-error' : createForm.email.$invalid  && createForm.email.$touched }">
-                                        <input type="text" name="email" placeholder="Email..." class="form-control" ng-model="email" required>
+                                        <input type="text" name="email" placeholder="Email..." class="form-control" ng-model="user.email" required>
                                         <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
                                             <p class="help-block" ng-message="invalid">Veuillez entrer un email valide</p>
                                             <p class="help-block" ng-message="required">Veuillez entrer un email</p>
@@ -60,12 +60,21 @@
 
                                     <!-- PASSWORD -->
 			                        <div class="form-group" ng-class="{ 'has-error' : createForm.password.$invalid && createForm.password.$touched }">
-			                        	<input type="password" name="password" placeholder="Mot de Passe..." class="form-control" ng-model="password" id="form-password" ng-minlength="5" required>
+			                        	<input type="password" name="password" placeholder="Mot de Passe..." class="form-control" ng-model="user.password" id="form-password" ng-minlength="5" required>
                                         <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
                                             <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 charactères</p>
                                             <p class="help-block" ng-message="required">Veuillez définir un mot de passe</p>
                                         </div>
 			                        </div>
+
+                                    <!-- VALID PASSWORD -->
+                                    <div class="form-group" ng-class="{ 'has-error' : createForm.password.$invalid && createForm.password.$touched }">
+                                        <input type="password" name="passwordvalidator" placeholder="Confirmez votre mot de Passe..." class="form-control" ng-model="passwordvalidator" id="form-password" ng-minlength="5" required>
+                                        <div ng-messages="createForm.passwordvalidator.$error" ng-show="createForm.passwordvalidator.$touched">
+                                            <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 charactères</p>
+                                            <p class="help-block" ng-message="required">Veuillez définir un mot de passe</p>
+                                        </div>
+                                    </div>
 
                                     <!-- VALIDATION -->
 			                        <button type="submit" class="btn" >Valider</button>

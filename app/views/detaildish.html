@@ -1,0 +1,85 @@
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <!-- Apply background -->
+            <div class="inner-bg">
+
+                <!-- page content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3 text-center">
+                            <img src="{{dish.image}}">
+                        </div>
+                        <div class="col-sm-9">
+                            <div class="row text-center">
+                                <span class="dish-description">{{dish.name}}</span>
+                            </div>
+                            <div class="row text-center">
+                                <span class="dish-description">{{dish.description}}</span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                    <span class="dish-description">{{dish.price}} € la part</span>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <span class="dish-description">{{dish.nbPart}} parts</span>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <span class="dish-description">{{dish.sizePart}} grammes par parts</span>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <span class="dish-description">{{dish.status}}</span>
+                            </div>
+                            <div class="row text-center">
+                                <span class="dish-description">{{dish.dateExpiration}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 30px;">
+                        <form name="dishForm" ng-submit="submitForm(dishForm.$valid)" novalidate>
+                            <!-- button -->
+                            <div class="row">
+                                <!-- DATE -->
+                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
+                                    <input type="date" name="validateDate" placeholder="Date (aaaa-mm-jj)" class="form-control" ng-model="validateDate" required>
+                                    <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
+                                        <p class="help-block" ng-message="required">Donnez une date de visite</p>
+                                        <p class="help-block" ng-message="date">La date que vous avez entré n'est pas valide veuillez entre la sous ce format aaaa-mm-jj</p>
+                                    </div>
+                                </div>
+                                <!-- TIME -->
+                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
+                                    <input type="time" name="validateTime" placeholder="Heure (hh:mm)" class="form-control" ng-model="validateTime" required>
+                                    <div ng-messages="dishForm.validateTime.$error" ng-show="dishForm.validateTime.$touched">
+                                        <p class="help-block" ng-message="required">Donnez une heure devisite</p>
+                                        <p class="help-block" ng-message="time">La date que vous avez entré n'est pas valide vauillez entre la sous ce format hh:mm</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!-- NB PART -->
+                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.nbPart.$invalid && dishForm.nbPart.$touched }">
+                                    <input type="number" name="nbPart" placeholder="Date de fin de l'offre (aaaa-mm-jj)" class="form-control" ng-model="nbPart" required>
+                                    <div ng-messages="dishForm.nbPart.$error" ng-show="dishForm.nbPart.$touched">
+                                        <p class="help-block" ng-message="required">Choissisez un nombre de parts</p>
+                                    </div>
+                                </div>
+
+                                <!-- VALIDATION -->
+                                <div class="col-sm-6">
+                                    <button type="submit" class="btn" >Valider</button>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                </div>
+                            </div>                    
+                        </form>  
+                    </div>
+                </div>
+            </div>
+            
+        </div>

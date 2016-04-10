@@ -54,6 +54,18 @@
                                     </div>
                                 </div>
 
+                                <!-- DATE -->
+                                <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
+                                    <input type="date" name="validateDate" placeholder="Date de fin de l'offre (aaaa-mm-jj)" class="form-control" ng-model="dish.validateDate" required>
+                                    <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
+                                        <p class="help-block" ng-message="required">Donnez une date limite à votre offre</p>
+                                        <p class="help-block" ng-message="date">La date que vous avez entré n'est pas valide veuillez entre la sous ce format aaaa-mm-jj</p>
+                                    </div>
+                                </div>
+
+                                <!-- VALIDATION -->
+                                <button type="submit" class="btn" >Valider</button>
+                                
                             </div>
                         </div>
 
