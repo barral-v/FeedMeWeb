@@ -9,13 +9,29 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('CreateaccountCtrl', function ($scope) {
+app.controller('CreateaccountCtrl', function ($scope, $location, $http) {
     // function to submit the form after all validation has occurred            
-  	$scope.submitForm = function(isValid) {
-
+  	$scope.submitCreateAccount = function(isValid) {
       // check to make sure the form is completely valid
       if (isValid) {
-		    alert('our form is amazing');
+		    var user = $scope.user;
+            var url = 'http://163.5.84.232/WebService/api/Utilisateurs'
+            $http({method: 'POST', url: url, 'data': user}).then(function successCallback(response) {
+              console.log(response);
+              var data = response.data;
+              if (data.Firstname){
+                connectedUser = data;
+                $location.path('/map').replace();
+            }
+            else{
+                $scope.requestError = response.statusText
+            }
+        }, function errorCallback(response) {
+            console.log(response);
+            if (response.statusText == "Not Found"){
+                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe"                
+            }
+        });
       }
 
   	};

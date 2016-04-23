@@ -47,6 +47,11 @@ angular
         controller: 'DetaildishCtrl',
         controllerAs: 'detaildish'
       })
+      .when('/detailuser/:userId', {
+        templateUrl: 'views/detailuser.html',
+        controller: 'DetailuserCtrl',
+        controllerAs: 'detailuser'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
@@ -60,4 +65,4 @@ angular
     //     key: 'AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA',
     //     libraries: 'weather,geometry,visualization'
     // });
-  });
+  }).value('connectedUser', {});

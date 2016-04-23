@@ -21,6 +21,8 @@ app.controller('DetaildishCtrl', ['$scope', '$routeParams', function ($scope, $r
 		utilisateurId: 1,
 		status: "En cours",
 		dateExpiration: "2080-01-01",
+		user: {name: "admin",
+			   id: 1},
 	}
     // function to submit the form after all validation has occurred            
   	$scope.submitForm = function(isValid) {
