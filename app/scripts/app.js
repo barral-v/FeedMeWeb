@@ -17,7 +17,8 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
-    'uiGmapgoogle-maps'
+    'uiGmapgoogle-maps',
+    'angular-md5'
   ])
   .config(function ($routeProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
 

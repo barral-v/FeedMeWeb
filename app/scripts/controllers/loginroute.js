@@ -9,14 +9,14 @@
  */
  var app = angular.module('feedMeWebApp');
  
- app.controller('LoginrouteCtrl', function ($scope, $location, $http) {
+ app.controller('LoginrouteCtrl', ['$scope', '$location', '$http', 'md5', function ($scope, $location, $http, md5) {
     // function to submit the form after all validation has occurred            
     $scope.submit = function(isValid) {
 	    // check to make sure the form is completely valid
 	    if (isValid) {
             var user = $scope.user;
             var url = 'http://163.5.84.232/WebService/api/Utilisateurs?email=';
-            url += user.username  + '&password=' + user.password;
+            url += user.username  + '&password=' + md5.createHash(user.password);
             $http({method: 'POST', url: url}).then(function successCallback(response) {
               console.log(response);
               var data = response.data;
@@ -35,5 +35,5 @@
         }
 
     };
-});
+}]);
 
