@@ -22,11 +22,12 @@
 
                     <div class="row">
                             <ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
-                                <ui-gmap-markers models="listMarkers" coords="'self'" icon="'icon'" options="'options'">
+                                <ui-gmap-markers models="listMarkers" click="'clickMarker'" coords="'self'" icon="'icon'" options="'options'">
                                 </ui-gmap-markers>
                             </ui-gmap-google-map>
                         </div>
                     </div>
+                    {{listMarkers}}
                 </div>
             </div>
         </div>

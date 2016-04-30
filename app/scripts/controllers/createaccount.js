@@ -9,13 +9,14 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('CreateaccountCtrl', function ($scope, $location, $http) {
+app.controller('CreateaccountCtrl', ['$scope', '$location', '$http', 'md5', function ($scope, $location, $http, md5) {
     // function to submit the form after all validation has occurred            
   	$scope.submitCreateAccount = function(isValid) {
       // check to make sure the form is completely valid
-      if (isValid) {
+      if (isValid && ($scope.user.Password == $scope.passwordvalidator)) {
 		    var user = $scope.user;
-            var url = 'http://163.5.84.232/WebService/api/Utilisateurs'
+            var url = 'http://163.5.84.232/WebService/api/Utilisateurs';
+            user.Password = md5.createHash(user.Password);
             $http({method: 'POST', url: url, 'data': user}).then(function successCallback(response) {
               console.log(response);
               var data = response.data;
@@ -35,5 +36,5 @@ app.controller('CreateaccountCtrl', function ($scope, $location, $http) {
       }
 
   	};
-  });
+  }]);
 

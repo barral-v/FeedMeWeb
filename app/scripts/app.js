@@ -62,8 +62,8 @@ angular
         redirectTo: '/'
       });
     $locationProvider.html5Mode(false);
-    // uiGmapGoogleMapApiProvider.configure({
-    //     key: 'AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA',
-    //     libraries: 'weather,geometry,visualization'
-    // });
+    uiGmapGoogleMapApiProvider.configure({
+        key: 'AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA',
+        libraries: 'weather,geometry,visualization'
+    });
   }).value('connectedUser', {});

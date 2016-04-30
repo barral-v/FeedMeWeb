@@ -12,19 +12,93 @@ var app = angular.module('feedMeWebApp');
 
 app.controller('MapCtrl', function ($scope, $http, $location) {
 
-    var clickMarker = function(){
-      $location.path('/').replace();
+    var url = 'http://163.5.84.232/WebService/api/Dishes';
+    var url2 = 'http://163.5.84.232/WebService/api/Adresses/';
+
+    $scope.lat = "0";
+    $scope.lng = "0";
+    $scope.error = "";
+
+    var clickMarker = function(gmarker_instance, event_name, marker){
+      $location.path('/detaildish/' + marker.id).replace();
     };
 
-    $scope.map = { center: { latitude: 48.831451, longitude: 2.3203403 }, zoom: 14, options: {scrollwheel: false, zoomControl: false, streetViewControl: false, disableDoubleClickZoom: true, mapTypeControl: false}};
-    $scope.initMap = function () {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -34.397, lng: 150.644},
-          zoom: 8
+    $scope.showPosition = function (position) {
+        $scope.lat = position.coords.latitude;
+        $scope.lng = position.coords.longitude;
+        $scope.map = {  center:{latitude: position.coords.latitude, 
+                                longitude: position.coords.longitude}, 
+                        zoom: 14,
+                        options: {zoomControl: false,
+                                  streetViewControl: false,
+                                  disableDoubleClickZoom: true,
+                                  mapTypeControl: false}
+                    };
+        $scope.$apply();
+    }
+
+    $scope.showError = function (error) {
+        switch (error.code) {
+            case error.PERMISSION_DENIED:
+                $scope.error = "Utilisateur a refusé la Géolocalisation."
+                break;
+            case error.POSITION_UNAVAILABLE:
+                $scope.error = "La localisation est indisponible."
+                break;
+            case error.TIMEOUT:
+                $scope.error = "La requête n'a pas abouti."
+                break;
+            case error.UNKNOWN_ERROR:
+                $scope.error = "Erreur inconnue."
+                break;
+        }
+        $scope.$apply();
+    }
+
+    $scope.getLocation = function () {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition($scope.showPosition, $scope.showError);
+        }
+        else {
+            $scope.error = "La géolocalisation n'est pas supportée par votre navigateur.";
+        }
+    }
+
+    $http({method: 'GET', url: url}).then(function successCallback(response) {
+
+        var data = response.data;
+
+        $scope.listMarkers = []
+
+        for (var i = 0; i < data.length; i++){
+
+            $scope.data = data[i];
+
+            $http({method: 'GET', url: url2 + data[i].AdressId}).then(function successCallback(response) {
+                
+                var marker = {  latitude: parseFloat(response.data.Latitude),
+                                longitude: parseFloat(response.data.Longitude),
+                                title: $scope.data.Name, 
+                                'id': $scope.data.DishId, 
+                                'events': {click: clickMarker}, 
+                                'options': {labelClass: 'maplabel', 
+                                            labelAnchor:'12 60', 
+                                            'labelContent': $scope.data.Name}
+                             }
+
+                $scope.listMarkers.push(marker)
+            })
+        }
+
+        $scope.getLocation();
+    
+    }, function errorCallback(response) {
+
+            console.log(response);
+        
+            if (response.statusText == "Not Found"){
+                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe"                
+            }
+        
         });
-      };
-    $scope.listMarkers = [
-      {latitude: 48.8307635, longitude: 2.3206993, title: "M1", 'icon': ' http://icons.iconarchive.com/icons/fatcow/farm-fresh/32/rainbow-icon.png', 'id': 1, 'events': {click: clickMarker}, 'options': {labelClass: 'maplabel', labelAnchor:'12 60', 'labelContent': "MARKER 1"}},
-      {latitude: 48.8310, longitude: 2.32030, title: "M2", 'icon': ' http://icons.iconarchive.com/icons/fatcow/farm-fresh/32/rainbow-icon.png', 'id': 2, 'events': {click: clickMarker}, 'options': {labelClass: 'maplabel', labelAnchor:'12 60', 'labelContent': "MARKER 2"}}
-    ];
   });

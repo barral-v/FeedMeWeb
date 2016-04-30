@@ -12,31 +12,31 @@
                         </div>
                         <div class="col-sm-9">
                             <div class="row text-center">
-                                <span class="dish-description">{{dish.name}}</span>
+                                <span class="dish-description">{{dish.Name}}</span>
                             </div>
                             <div class="row text-center">
-                                <a href="/detailuser/{{dish.user.id}}" class="dish-description">{{dish.user.name}}</span>
+                                <a href="/detailuser/{{dish.UtilisateurId}}" class="dish-description">{{dish.Utilisateur.Name}}</span></a>
                             </div>
                             <div class="row text-center">
-                                <span class="dish-description">{{dish.description}}</span>
+                                <span class="dish-description">{{dish.Description}}</span>
                             </div>
 
                             <div class="row">
                                 <div class="col-sm-4 text-center">
-                                    <span class="dish-description">{{dish.price}} € la part</span>
+                                    <span class="dish-description">{{dish.Price}} € la part</span>
                                 </div>
                                 <div class="col-sm-4 text-center">
-                                    <span class="dish-description">{{dish.nbPart}} parts</span>
+                                    <span class="dish-description">{{dish.NbPart}} parts</span>
                                 </div>
                                 <div class="col-sm-4 text-center">
-                                    <span class="dish-description">{{dish.sizePart}} grammes par parts</span>
+                                    <span class="dish-description">{{dish.SizePart}} grammes par parts</span>
                                 </div>
                             </div>
                             <div class="row text-center">
-                                <span class="dish-description">{{dish.status}}</span>
+                                <span class="dish-description">{{dish.Statut}}</span>
                             </div>
                             <div class="row text-center">
-                                <span class="dish-description">{{dish.dateExpiration}}</span>
+                                <span class="dish-description">{{dish.DateExpiration}}</span>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                             <div class="row">
                                 <!-- NB PART -->
                                 <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.nbPart.$invalid && dishForm.nbPart.$touched }">
-                                    <input type="number" name="nbPart" placeholder="Date de fin de l'offre (aaaa-mm-jj)" class="form-control" ng-model="nbPart" required>
+                                    <input type="number" name="nbPart" placeholder="Nb de parts souhaitées" class="form-control" ng-model="nbPart" required>
                                     <div ng-messages="dishForm.nbPart.$error" ng-show="dishForm.nbPart.$touched">
                                         <p class="help-block" ng-message="required">Choissisez un nombre de parts</p>
                                     </div>
