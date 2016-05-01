@@ -51,7 +51,7 @@
 
                                     <!-- PHONE -->
                                     <div class="form-group">
-                                        <input type="text" name="phone" placeholder="Telephone..." class="form-control" ng-model="user.Phone">
+                                        <input type="text" name="phone" placeholder="Telephone..." class="form-control" ng-model="user.PhoneNumber">
                                     </div>
 
                                     <!-- Road -->
@@ -89,7 +89,7 @@
 
                                     <!-- VALID PASSWORD -->
                                     <div class="form-group" ng-class="{ 'has-error' : createForm.passwordvalidator.$invalid && createForm.passwordvalidator.$touched }">
-                                        <input type="password" name="passwordvalidator" placeholder="Confirmez votre mot de Passe..." class="form-control" ng-model="passwordvalidator" id="form-passwordvalidator" ng-minlength="5" required>
+                                        <input type="password" name="user.ConfirmPassword" placeholder="Confirmez votre mot de Passe..." class="form-control" ng-model="passwordvalidator" id="form-passwordvalidator" ng-minlength="5" required>
                                         <div ng-messages="createForm.passwordvalidator.$error" ng-show="createForm.passwordvalidator.$touched">
                                             <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 charactères</p>
                                             <p class="help-block" ng-message="required">Veuillez définir un mot de passe</p>

@@ -15,8 +15,7 @@ app.controller('CreateaccountCtrl', ['$scope', '$location', '$http', 'md5', func
       // check to make sure the form is completely valid
       if (isValid && ($scope.user.Password == $scope.passwordvalidator)) {
 		    var user = $scope.user;
-            var url = 'http://163.5.84.232/WebService/api/Utilisateurs';
-            user.Password = md5.createHash(user.Password);
+            var url = 'http://163.5.84.232/WebService/api/Account/Register';
             $http({method: 'POST', url: url, 'data': user}).then(function successCallback(response) {
               console.log(response);
               var data = response.data;

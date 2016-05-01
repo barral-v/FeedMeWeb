@@ -20,7 +20,12 @@ angular
     'uiGmapgoogle-maps',
     'angular-md5'
   ])
-  .config(function ($routeProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
+  .config(function ($httpProvider, $routeProvider, $locationProvider, uiGmapGoogleMapApiProvider) {
+
+    $httpProvider.defaults.useXDomain = true;
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8';
+    delete $httpProvider.defaults.headers.common['X-Requested-With'];
+
 
     $routeProvider
       .when('/', {
