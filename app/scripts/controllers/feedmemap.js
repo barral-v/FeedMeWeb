@@ -71,7 +71,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
         method: 'GET',
         url: url,
         headers: {
-            'Authorization': 'bearer '+ $cookies.get("feedmetoken"),
+            'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
         }
     };
 

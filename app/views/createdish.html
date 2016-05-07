@@ -6,7 +6,7 @@
 
                 <!-- page content -->
                 <div class="container">
-                    <form name="dishForm" ng-submit="submitForm(dishForm.$valid)" novalidate>
+                    <form name="dishForm" ng-submit="submitCreateDish(dishForm.$valid)" novalidate>
                         <!-- button -->
                         <div class="row">
                             <div class="col-sm-4">
@@ -16,7 +16,7 @@
 
                                 <!-- DISH NAME -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.name.$invalid && dishForm.name.$touched }">
-                                    <input type="text" name="name" placeholder="Nom" class="form-control" ng-model="dish.name" required>
+                                    <input type="text" name="name" placeholder="Nom" class="form-control" ng-model="dish.Name" required>
                                     <div ng-messages="dishForm.name.$error" ng-show="dishForm.name.$touched">
                                         <p class="help-block" ng-message="required">Veuillez donner un nom à votre plat</p>
                                     </div>
@@ -24,7 +24,7 @@
 
                                 <!-- DISH DESCRIPTION -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.description.$invalid && dishForm.description.$touched }">
-                                    <textarea style="height: 100px" name="description" placeholder="Description" class="form-control" ng-model="dish.description" required></textarea>
+                                    <textarea style="height: 100px" name="description" placeholder="Description" class="form-control" ng-model="dish.Description" required></textarea>
                                     <div ng-messages="dishForm.description.$error" ng-show="dishForm.description.$touched">
                                         <p class="help-block" ng-message="required">Decrivez votre plat</p>
                                     </div>
@@ -32,7 +32,7 @@
 
                                 <!-- DISH PRICE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.price.$invalid && dishForm.price.$touched }">
-                                    <input type="number" name="price" placeholder="Prix par part" class="form-control" ng-model="dish.price" required>
+                                    <input type="number" name="price" placeholder="Prix par part" class="form-control" ng-model="dish.Price" required>
                                     <div ng-messages="dishForm.price.$error" ng-show="dishForm.price.$touched">
                                         <p class="help-block" ng-message="required">Donnez un prix par part à votre plat</p>
                                     </div>
@@ -40,7 +40,7 @@
 
                                 <!-- DISH NB PIECE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.nbPiece.$invalid && dishForm.nbPiece.$touched }">
-                                    <input type="number" name="nbPiece" placeholder="Nombre de parts" class="form-control" ng-model="dish.nbPiece" required>
+                                    <input type="number" name="nbPiece" placeholder="Nombre de parts" class="form-control" ng-model="dish.NbPart" required>
                                     <div ng-messages="dishForm.nbPiece.$error" ng-show="dishForm.nbPiece.$touched">
                                         <p class="help-block" ng-message="required">Combien de part mettez vous en vente</p>
                                     </div>
@@ -48,18 +48,36 @@
 
                                 <!-- DISH SIZE PIECE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.sizePiece.$invalid && dishForm.sizePiece.$touched }">
-                                    <input type="number" name="sizePiece" placeholder="Taille d'une part" class="form-control" ng-model="dish.sizePiece" required>
+                                    <input type="number" name="sizePiece" placeholder="Taille d'une part" class="form-control" ng-model="dish.SizePart" required>
                                     <div ng-messages="dishForm.sizePiece.$error" ng-show="dishForm.sizePiece.$touched">
                                         <p class="help-block" ng-message="required">Donnez la quantité d'une part de votre plat</p>
                                     </div>
                                 </div>
 
-                                <!-- DATE -->
+                                <!-- ENDDATE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
-                                    <input type="date" name="validateDate" placeholder="Date de fin de l'offre (aaaa-mm-jj)" class="form-control" ng-model="dish.validateDate" required>
+                                    <input type="date" name="validateDate" placeholder="Date de fin de l'offre (aaaa-mm-jj)" class="form-control" ng-model="dish.DateExpiration" required>
                                     <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
                                         <p class="help-block" ng-message="required">Donnez une date limite à votre offre</p>
                                         <p class="help-block" ng-message="date">La date que vous avez entré n'est pas valide veuillez entre la sous ce format aaaa-mm-jj</p>
+                                    </div>
+                                </div>
+
+                                <!-- PICKUPSTARTTIME -->
+                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
+                                    <input type="time" name="validateTime" placeholder="Heure (hh:mm)" class="form-control" ng-model="dish.PickUpStartTime" required>
+                                    <div ng-messages="dishForm.validateTime.$error" ng-show="dishForm.validateTime.$touched">
+                                        <p class="help-block" ng-message="required">Donnez une heure devisite</p>
+                                        <p class="help-block" ng-message="time">La date que vous avez entré n'est pas valide vauillez entre la sous ce format hh:mm</p>
+                                    </div>
+                                </div>
+
+                                <!-- PICKUPENDTIME-->
+                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.endTime.$invalid && dishForm.endTime.$touched }">
+                                    <input type="time" name="endTime" placeholder="Heure (hh:mm)" class="form-control" ng-model="dish.PickUpEndTime" required>
+                                    <div ng-messages="dishForm.endTime.$error" ng-show="dishForm.endTime.$touched">
+                                        <p class="help-block" ng-message="required">Donnez une heure devisite</p>
+                                        <p class="help-block" ng-message="time">La date que vous avez entré n'est pas valide vauillez entre la sous ce format hh:mm</p>
                                     </div>
                                 </div>
 
