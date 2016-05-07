@@ -17,6 +17,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngMessages',
+    'ui.bootstrap',
     'uiGmapgoogle-maps',
     'angular-md5'
   ])
@@ -71,4 +72,4 @@ angular
         key: 'AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA',
         libraries: 'weather,geometry,visualization'
     });
-  }).value('connectedUser', {});
+  });

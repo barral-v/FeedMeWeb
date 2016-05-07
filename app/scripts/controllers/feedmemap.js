@@ -10,7 +10,7 @@
 var app = angular.module('feedMeWebApp');
  
 
-app.controller('MapCtrl', function ($scope, $http, $location) {
+app.controller('MapCtrl', ['$rootScope', '$scope', '$location', '$http', function  ($rootScope, $scope, $http, $location) {
 
     var url = 'http://163.5.84.232/WebService/api/Dishes';
     var url2 = 'http://163.5.84.232/WebService/api/Adresses/';
@@ -101,4 +101,4 @@ app.controller('MapCtrl', function ($scope, $http, $location) {
             }
         
         });
-  });
+  }]);

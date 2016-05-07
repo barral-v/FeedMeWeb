@@ -19,7 +19,8 @@
 	margin-bottom: 15px;
 }
 
- 
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
 input[type="number"], input[type="date"], input[type="time"]{
 	height: 50px;
     margin: 0;
