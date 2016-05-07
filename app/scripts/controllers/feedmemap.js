@@ -10,10 +10,13 @@
 var app = angular.module('feedMeWebApp');
  
 
-app.controller('MapCtrl', ['$rootScope', '$scope', '$location', '$http', function  ($rootScope, $scope, $http, $location) {
+app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function  ($cookies, $scope, $location, $http) {
 
-    var url = 'http://163.5.84.232/WebService/api/Dishes';
-    var url2 = 'http://163.5.84.232/WebService/api/Adresses/';
+    if (!$cookies.get("feedmetoken")){
+        $location.path('/').replace();
+    }
+
+    var url = 'http://163.5.84.232/WebService/api/Dishes?page=map';
 
     $scope.lat = "0";
     $scope.lng = "0";
@@ -64,31 +67,41 @@ app.controller('MapCtrl', ['$rootScope', '$scope', '$location', '$http', functio
         }
     }
 
-    $http({method: 'GET', url: url}).then(function successCallback(response) {
+    var request = {
+        method: 'GET',
+        url: url,
+        headers: {
+            'Authorization': 'bearer '+ $cookies.get("feedmetoken"),
+        }
+    };
+
+    $http(request).then(function successCallback(response) {
 
         var data = response.data;
 
-        $scope.listMarkers = []
+        $scope.listMarkers = [];
 
-        for (var i = 0; i < data.length; i++){
+        console.log(response);
 
-            $scope.data = data[i];
+        // for (var i = 0; i < data.length; i++){
 
-            $http({method: 'GET', url: url2 + data[i].AdressId}).then(function successCallback(response) {
+        //     $scope.data = data[i];
+
+        //     $http({method: 'GET', url: url2 + data[i].AdressId}).then(function successCallback(response) {
                 
-                var marker = {  latitude: parseFloat(response.data.Latitude),
-                                longitude: parseFloat(response.data.Longitude),
-                                title: $scope.data.Name, 
-                                'id': $scope.data.DishId, 
-                                'events': {click: clickMarker}, 
-                                'options': {labelClass: 'maplabel', 
-                                            labelAnchor:'12 60', 
-                                            'labelContent': $scope.data.Name}
-                             }
+        //         var marker = {  latitude: parseFloat(response.data.Latitude),
+        //                         longitude: parseFloat(response.data.Longitude),
+        //                         title: $scope.data.Name, 
+        //                         'id': $scope.data.DishId, 
+        //                         'events': {click: clickMarker}, 
+        //                         'options': {labelClass: 'maplabel', 
+        //                                     labelAnchor:'12 60', 
+        //                                     'labelContent': $scope.data.Name}
+        //                      }
 
-                $scope.listMarkers.push(marker)
-            })
-        }
+        //         $scope.listMarkers.push(marker)
+        //     })
+        // }
 
         $scope.getLocation();
     

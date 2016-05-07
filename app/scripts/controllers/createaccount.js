@@ -9,7 +9,7 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('CreateaccountCtrl', ['$rootScope', '$scope', '$location', '$http', function ($rootScope, $scope, $location, $http) {
+app.controller('CreateaccountCtrl', ['$cookies', '$scope', '$location', '$http', function ($cookies, $scope, $location, $http) {
     // function to submit the form after all validation has occurred            
   	$scope.submitCreateAccount = function(isValid) {
       // check to make sure the form is completely valid
@@ -30,10 +30,9 @@ app.controller('CreateaccountCtrl', ['$rootScope', '$scope', '$location', '$http
             }
 
             $http(request).then(function successCallback(response) {
-              console.log(response);
               var data = response.data;
               if (data.access_token){
-                $rootScope.oauth = {access_token: data.access_token}
+                $cookies.put("feedmetoken", data.access_token)
                 $location.path('/map').replace();
             }
             else{

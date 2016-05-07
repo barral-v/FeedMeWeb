@@ -9,7 +9,7 @@
  */
  var app = angular.module('feedMeWebApp');
  
- app.controller('LoginrouteCtrl', ['$rootScope', '$scope', '$location', '$http', 'md5', function ($rootScope, $scope, $location, $http, md5) {
+ app.controller('LoginrouteCtrl', ['$cookies', '$scope', '$location', '$http', function ($cookies, $scope, $location, $http) {
     // function to submit the form after all validation has occurred            
     $scope.submit = function(isValid) {
 	    // check to make sure the form is completely valid
@@ -31,10 +31,9 @@
                 }
             }
             $http(request).then(function successCallback(response) {
-              console.log(response);
               var data = response.data;
               if (data.access_token){
-                $rootScope.oauth = {access_token: data.access_token}
+                $cookies.put("feedmetoken", data.access_token)
                 $location.path('/map').replace();
                 }
                 else{
