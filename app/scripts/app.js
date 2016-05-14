@@ -59,6 +59,16 @@ angular
         controller: 'DetailuserCtrl',
         controllerAs: 'detailuser'
       })
+      .when('/detailself', {
+        templateUrl: 'views/detailself.html',
+        controller: 'DetailselfCtrl',
+        controllerAs: 'detailself'
+      })
+      .when('/history', {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl',
+        controllerAs: 'history'
+      })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',

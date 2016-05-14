@@ -12,9 +12,9 @@ var app = angular.module('feedMeWebApp');
 
 app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function  ($cookies, $scope, $location, $http) {
 
-    if (!$cookies.get("feedmetoken")){
-        $location.path('/').replace();
-    }
+    // if (!$cookies.get("feedmetoken")){
+    //     $location.path('/').replace();
+    // }
 
     var url = 'http://163.5.84.232/WebService/api/Dishes?page=map';
 
@@ -71,6 +71,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
         method: 'GET',
         url: url,
         headers: {
+            // 'Content-Type': 'multipart/form-data',
             'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
         }
     };
