@@ -1,1 +1,43 @@
-<p>This is the detailuser view.</p>
+        <!-- Top content -->
+        <div class="top-content">
+        	
+            <!-- Apply background -->
+            <div class="inner-bg">
+
+                <!-- page content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="row text-center">
+                                <span class="user-description">{{user.UserName}}</span>
+                            </div>
+                            <div class="row text-center">
+                                <a href="/detailuser/{{user.UtilisateurId}}" class="user-description">{{user.Utilisateur.Name}}</span></a>
+                            </div>
+                            <div class="row text-center">
+                                <span class="user-description">{{user.Description}}</span>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                    <span class="user-description">{{user.Price}} € la part</span>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <span class="user-description">{{user.NbPart}} parts</span>
+                                </div>
+                                <div class="col-sm-4 text-center">
+                                    <span class="user-description">{{user.SizePart}} grammes par parts</span>
+                                </div>
+                            </div>
+                            <div class="row text-center">
+                                <span class="user-description">{{user.Statut}}</span>
+                            </div>
+                            <div class="row text-center">
+                                <span class="user-description">{{user.DateExpiration}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
