@@ -54,25 +54,25 @@ angular
         controller: 'DetaildishCtrl',
         controllerAs: 'detaildish'
       })
-      .when('/detailuser/:userId', {
-        templateUrl: 'views/detailuser.html',
-        controller: 'DetailuserCtrl',
-        controllerAs: 'detailuser'
+      .when('/about', {
+        templateUrl: 'views/about.html',
+        controller: 'AboutCtrl',
+        controllerAs: 'about'
       })
       .when('/detailself', {
         templateUrl: 'views/detailself.html',
         controller: 'DetailselfCtrl',
         controllerAs: 'detailself'
       })
+      .when('/detailuser/:userId', {
+        templateUrl: 'views/detailuser.html',
+        controller: 'DetailuserCtrl',
+        controllerAs: 'detailuser'
+      })
       .when('/history', {
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl',
         controllerAs: 'history'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl',
-        controllerAs: 'about'
       })
       .otherwise({
         redirectTo: '/'
