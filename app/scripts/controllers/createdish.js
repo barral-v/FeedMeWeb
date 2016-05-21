@@ -9,7 +9,7 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('CreatedishCtrl', ['$cookies', '$http', '$scope', function ($cookies, $http, $scope) {
+app.controller('CreatedishCtrl', ['$location', '$cookies', '$http', '$scope', function ($location, $cookies, $http, $scope) {
 
 	$scope.showDishPosition = function (position) {
         $scope.lat = position.coords.latitude;
@@ -34,12 +34,13 @@ app.controller('CreatedishCtrl', ['$cookies', '$http', '$scope', function ($cook
 
 	      	var dish = $scope.dish;
 
+	      	$scope.getDishLocation();
+
             dish.Address = {
                 Latitude: $scope.lat,
                 Longitude: $scope.lng,
             }
-
-	      	$scope.getDishLocation();
+            dish.Status = "In progress";
         	
         	var url = 'http://163.5.84.232/WebService/api/Dishes';
 
@@ -48,24 +49,13 @@ app.controller('CreatedishCtrl', ['$cookies', '$http', '$scope', function ($cook
               url: url,
               data: dish,
               headers: {
+                'Content-Type': 'application/json;charset=utf-8',
                 'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
               },
-              transformRequest: function (obj) {
-                    var str = [];
-                    for (var p in obj)
-                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-                    return str.join("&");
-                }
             }
 
             $http(request).then(function successCallback(response) {
-              var data = response.data;
-              if (data.access_token){
                 $location.path('/map').replace();
-                }
-                else{
-                    $scope.requestError = "Le mot de passe ou l'identifiant est invalide"
-                }
             }, function errorCallback(response) {
                 console.log(response);
                 if (response.statusText == "Not Found"){

@@ -19,18 +19,25 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
     $scope.error = "";
     $scope.windowShow = false;
     $scope.selectedCoords = {};
-    $scope.selectedDish = {};
+    $scope.selectedDish = {Name: "",
+                        Price: 0,
+                        NbPart: 0,
+                        DishId: 0};
+    $scope.listMarkers = [];
 
 
     var clickMarker = function(gmarker_instance, event_name, marker){  
       $scope.windowShow = true;
       $scope.selectedCoords = marker.coords;
-      $scope.selectedDish = marker.dish;
+      $scope.selectedDish.Name = marker.title;
+      $scope.selectedDish.Price = marker.price;
+      $scope.selectedDish.DishId = marker.id;
+      $scope.selectedDish.NbPart = marker.nbpart;
     };
 
     $scope.closeClick = function(){
         $scope.windowShow = false;
-    }
+    };
 
     $scope.showPosition = function (position) {
         $scope.lat = position.coords.latitude;
@@ -44,25 +51,25 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
                                   mapTypeControl: false}
                     };
         $scope.$apply();
-    }
+    };
 
     $scope.showError = function (error) {
         switch (error.code) {
             case error.PERMISSION_DENIED:
-                $scope.error = "Utilisateur a refusé la Géolocalisation."
+                $scope.error = "Utilisateur a refusé la Géolocalisation.";
                 break;
             case error.POSITION_UNAVAILABLE:
-                $scope.error = "La localisation est indisponible."
+                $scope.error = "La localisation est indisponible.";
                 break;
             case error.TIMEOUT:
-                $scope.error = "La requête n'a pas abouti."
+                $scope.error = "La requête n'a pas abouti.";
                 break;
             case error.UNKNOWN_ERROR:
-                $scope.error = "Erreur inconnue."
+                $scope.error = "Erreur inconnue.";
                 break;
         }
         $scope.$apply();
-    }
+    };
 
     $scope.getLocation = function () {
         if (navigator.geolocation) {
@@ -71,84 +78,78 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
         else {
             $scope.error = "La géolocalisation n'est pas supportée par votre navigateur.";
         }
-    }
+    };
 
     var request = {
         method: 'GET',
         url: url,
         headers: {
-            // 'Content-Type': 'multipart/form-data',
             'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
         }
     };
+
+    
 
     $http(request).then(function successCallback(response) {
 
         var geocoder = new google.maps.Geocoder();
         var data = response.data;
 
-        $scope.listMarkers = [];
+        var coords = {longitude: parseFloat("0"),
+                     latitude: parseFloat("0")};
 
         for (var i = 0; i < data.length; i++){
     
             var dish = data[i];
 
-            console.log(dish);
+            if (dish.Statut == "In progress"){
 
-            if (dish.Statut = "In progress"){
+                
 
-                var marker = {  
+                if (dish.Address.Latitude && dish.Address.Longitude){
+                    $scope.listMarkers.push({  
+                            title: dish.Name, 
+                            id: dish.DishId,
+                            price: dish.Price,
+                            nbpart: dish.NbPart,
+                            events: {click: clickMarker},
+                            coords: {
+                                longitude: parseFloat(dish.Address.Longitude),
+                                latitude: parseFloat(dish.Address.Latitude),
+                            }
+                        });   
+                } else{
+                    var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address="
+                    geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA"
+
+                    $http.get(geourl).success((function(dish) {
+                        return function(data) {
+                            var results = data.results;
+                            $scope.listMarkers.push({  
                                 title: dish.Name, 
-                                'id': dish.DishId,
-                                'events': {click: clickMarker},
-                                'options': {labelClass: 'maplabel', 
-                                            labelAnchor:'12 60', 
-                                            'labelContent': dish.Name
-                                        },
-                                'dish': dish,
-                            }
-
-                if (dish.Latitude && dish.Longitude){
-                    marker.coords = {longitude: parseFloat(response.data.Longitude),
-                                    latitude: parseFloat(response.data.Latitude)}   
-                    $scope.listMarkers.push(marker);
+                                id: dish.DishId,
+                                price: dish.Price,
+                                nbpart: dish.NbPart,
+                                events: {click: clickMarker},
+                                coords: {
+                                    longitude: parseFloat(results[0].geometry.location.lng),
+                                    latitude: parseFloat(results[0].geometry.location.lat),
+                                }
+                            });
+                        }
+                    })(dish));
                 }
-                else if (dish.Address.Road) {
-                    // Initialize the Geocoder
-                    
-                    if (geocoder){
-                        var address = dish.Address.Road;
-                        geocoder.geocode({
-                            'address': address
-                        }, function (results, status) {
-                            if (status == google.maps.GeocoderStatus.OK) {
-                                marker.coords = {longitude: parseFloat(results[0].geometry.location.lng()),
-                                                latitude: parseFloat(results[0].geometry.location.lat())}    
-                                $scope.listMarkers.push(marker)
-                            }
-                        });
-                    }
-                }            
-
             }
-
         }
-
-        angular.forEach($scope.listMarker, function(value, key) {
-            value.onClick = function(){
-                $scope.onClick(value.data);
-                $scope.MapOptions.markers.selected = value;
-            };
-        });
-
-        $scope.getLocation();
+    
+    $scope.getLocation();
     
     }, function errorCallback(response) {
 
             console.log(response);
         
             if (response.statusText == "Not Found"){
-                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe"                
+                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe";                
             }
         
         });

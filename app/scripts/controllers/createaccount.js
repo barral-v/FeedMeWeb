@@ -24,7 +24,7 @@ app.controller('CreateaccountCtrl', ['$cookies', '$scope', '$location', '$http',
               headers: {
                         'Content-Type': 'application/json;charset=utf-8'
                     },
-            }
+            };
 
         $http(request).then(function successCallback(response) {
             $location.path('/').replace();

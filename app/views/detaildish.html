@@ -7,15 +7,12 @@
                 <!-- page content -->
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-3 text-center">
-                            <img src="{{dish.image}}">
-                        </div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-12">
                             <div class="row text-center">
                                 <span class="dish-description">{{dish.Name}}</span>
                             </div>
                             <div class="row text-center">
-                                <a href="/detailuser/{{dish.UtilisateurId}}" class="dish-description"><span>{{dish.Utilisateur.Name}}</span></a>
+                                <span>{{dish.Utilisateur.Name}}</span>
                             </div>
                             <div class="row text-center">
                                 <span class="dish-description">{{dish.Description}}</span>

@@ -9,22 +9,23 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('DetaildishCtrl', ['$scope', '$routeParams', '$http', function ($scope, $routeParams, $http) {
+app.controller('DetaildishCtrl', ['$cookies', '$scope', '$routeParams', '$http', function ($cookies, $scope, $routeParams, $http) {
 	
 	var url = 'http://163.5.84.232/WebService/api/Dishes/' + $routeParams.dishId;
-	var url2 = 'http://163.5.84.232/WebService/api/Utilisateurs/';
-	var url3 = 'http://163.5.84.232/WebService/api/Orders';
+	var url2 = 'http://163.5.84.232/WebService/api/Orders';
 
+	var request = {
+        method: 'GET',
+        url: url,
+        headers: {
+            // 'Content-Type': 'multipart/form-data',
+            'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+        }
+    };
 
-    $http({method: 'GET', url: url}).then(function successCallback(response) {
+    $http(request).then(function successCallback(response) {
 
     	$scope.dish = response.data;
-
-    	$http({method: 'GET', url: url2 + $scope.dish.UtilisateurId}).then(function successCallback(response) {
-
-    		$scope.dish.Utilisateur = response.data;
-    	
-    	});
 
 	});
 

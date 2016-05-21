@@ -8,11 +8,15 @@
                 <div class="container">
                     <form name="dishForm" ng-submit="submitCreateDish(dishForm.$valid)" novalidate>
                         <!-- button -->
+
                         <div class="row">
-                            <div class="col-sm-4">
-                                <input name="photo" type="file" id="photo" file-model="fileToUpload" />
+                            <div class="text-center">
+                                <h2>Creez un nouveau plat</h2>
                             </div>
-                            <div class="col-sm-8">
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
 
                                 <!-- DISH NAME -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.name.$invalid && dishForm.name.$touched }">
