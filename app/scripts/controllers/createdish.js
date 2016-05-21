@@ -9,7 +9,7 @@
  */
 var app = angular.module('feedMeWebApp');
  
-app.controller('CreatedishCtrl', ['$cookies', '$scope', function ($cookies, $scope) {
+app.controller('CreatedishCtrl', ['$cookies', '$http', '$scope', function ($cookies, $http, $scope) {
 
 	$scope.showDishPosition = function (position) {
         $scope.lat = position.coords.latitude;
