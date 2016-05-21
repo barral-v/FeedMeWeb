@@ -12,19 +12,25 @@ var app = angular.module('feedMeWebApp');
 
 app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function  ($cookies, $scope, $location, $http) {
 
-    if (!$cookies.get("feedmetoken")){
-        $location.path('/').replace();
-    }
-
     var url = 'http://163.5.84.232/WebService/api/Dishes?page=map';
 
     $scope.lat = "0";
     $scope.lng = "0";
     $scope.error = "";
+    $scope.windowShow = false;
+    $scope.selectedCoords = {};
+    $scope.selectedDish = {};
 
-    var clickMarker = function(gmarker_instance, event_name, marker){
-      $location.path('/detaildish/' + marker.id).replace();
+
+    var clickMarker = function(gmarker_instance, event_name, marker){  
+      $scope.windowShow = true;
+      $scope.selectedCoords = marker.coords;
+      $scope.selectedDish = marker.dish;
     };
+
+    $scope.closeClick = function(){
+        $scope.windowShow = false;
+    }
 
     $scope.showPosition = function (position) {
         $scope.lat = position.coords.latitude;
@@ -78,31 +84,62 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
 
     $http(request).then(function successCallback(response) {
 
+        var geocoder = new google.maps.Geocoder();
         var data = response.data;
 
         $scope.listMarkers = [];
 
-        console.log(response);
+        for (var i = 0; i < data.length; i++){
+    
+            var dish = data[i];
 
-        // for (var i = 0; i < data.length; i++){
+            console.log(dish);
 
-        //     $scope.data = data[i];
+            if (dish.Statut = "In progress"){
 
-        //     $http({method: 'GET', url: url2 + data[i].AdressId}).then(function successCallback(response) {
-                
-        //         var marker = {  latitude: parseFloat(response.data.Latitude),
-        //                         longitude: parseFloat(response.data.Longitude),
-        //                         title: $scope.data.Name, 
-        //                         'id': $scope.data.DishId, 
-        //                         'events': {click: clickMarker}, 
-        //                         'options': {labelClass: 'maplabel', 
-        //                                     labelAnchor:'12 60', 
-        //                                     'labelContent': $scope.data.Name}
-        //                      }
+                var marker = {  
+                                title: dish.Name, 
+                                'id': dish.DishId,
+                                'events': {click: clickMarker},
+                                'options': {labelClass: 'maplabel', 
+                                            labelAnchor:'12 60', 
+                                            'labelContent': dish.Name
+                                        },
+                                'dish': dish,
+                            }
 
-        //         $scope.listMarkers.push(marker)
-        //     })
-        // }
+                if (dish.Latitude && dish.Longitude){
+                    marker.coords = {longitude: parseFloat(response.data.Longitude),
+                                    latitude: parseFloat(response.data.Latitude)}   
+                    $scope.listMarkers.push(marker);
+                }
+                else if (dish.Address.Road) {
+                    // Initialize the Geocoder
+                    
+                    if (geocoder){
+                        var address = dish.Address.Road;
+                        geocoder.geocode({
+                            'address': address
+                        }, function (results, status) {
+                            if (status == google.maps.GeocoderStatus.OK) {
+                                marker.coords = {longitude: parseFloat(results[0].geometry.location.lng()),
+                                                latitude: parseFloat(results[0].geometry.location.lat())}    
+                                $scope.listMarkers.push(marker)
+                            }
+                        });
+                    }
+                }            
+
+            }
+
+        }
+
+        angular.forEach($scope.listMarker, function(value, key) {
+            value.onClick = function(){
+                $scope.onClick(value.data);
+                $scope.MapOptions.markers.selected = value;
+            };
+        });
 
         $scope.getLocation();
     

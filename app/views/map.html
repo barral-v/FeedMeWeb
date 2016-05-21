@@ -22,12 +22,19 @@
 
                     <div class="row">
                             <ui-gmap-google-map center='map.center' zoom='map.zoom' options='map.options'>
-                                <ui-gmap-markers models="listMarkers" click="'clickMarker'" coords="'self'" icon="'icon'" options="'options'">
+                                <ui-gmap-window coords="selectedCoords" show="windowShow" closeClick="closeClick()">
+                                    <div style="padding: 20px;text-align: center">
+                                        <p>{{selectedDish.Name}}</p>
+                                        <p>{{selectedDish.Price}} €</p>
+                                        <p>{{selectedDish.NbPart}} parts</p>
+                                        <p><a href="/#/detaildish/{{selectedDish.DishId}}">Voir les details</a></p>
+                                    </div>
+                                </ui-gmap-window>
+                                <ui-gmap-markers models="listMarkers" click="'onClick'" coords="'coords'" icon="'icon'" options="'options'">
                                 </ui-gmap-markers>
                             </ui-gmap-google-map>
                         </div>
                     </div>
-                    {{listMarkers}}
                 </div>
             </div>
         </div>
