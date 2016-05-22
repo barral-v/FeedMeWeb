@@ -2,12 +2,8 @@
 	<h2>Historique</h2>
 	<div class="col-sm-12">
 		<h3>Achat</h3>
-		<!-- <div ng-repeat="model in buyList track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Accepté</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div> -->
 		<table class="table table-bordered table-striped">
-			
+
 			<thead>
 				<tr>
 					<td>
@@ -20,30 +16,28 @@
 						Date de création
 					</td>
 					<td>
-						
+
 					</td>
 				</tr>
 			</thead>
-			
+
 			<tbody>
-				<tr ng-repeat="model in buyList track by model.OrderId">
+			<tr ng-repeat="model in buyList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
-					<td>{{ model.Dish.DateCreate }}</td>
-					<td></td>
+					<td>{{ model.DateCreate }}</td>
+					<td>
+						<button ng-show="model.Statut == 'In progress' || model.Statut == 'Accept'">Cancel</button>
+					</td>
 				</tr>
 			</tbody>
-			
+
 		</table>
 	</div>
 	<div class="col-sm-12">
 		<h3>Vente</h3>
-<!-- 		<div ng-repeat="model in sellList track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Accepté</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div> -->
 		<table class="table table-bordered table-striped">
-			
+
 			<thead>
 				<tr>
 					<td>
@@ -56,23 +50,27 @@
 						Date de création
 					</td>
 					<td>
-						
+
 					</td>
 				</tr>
 			</thead>
-			
+
 			<tbody>
 				<tr ng-repeat="model in buyList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
 					<td>{{ model.Dish.DateCreate }}</td>
-					<td></td>
+					<td>
+						<button ng-show="model.Statut == 'In progress'">Accept</button>
+						<button ng-show="model.Statut == 'In progress'">Refuse</button>
+						<button ng-show="model.Statut == 'Accept'">Cancel</button>
+						<button ng-show="model.Statut == 'Accept'">Done</button>
+					</td>
 				</tr>
 			</tbody>
-			
+
 		</table>
 
 	</div>
 	
 
-	
