@@ -26,6 +26,17 @@ app.controller('CreatedishCtrl', ['$location', '$cookies', '$http', '$scope', fu
         }
     }
 
+    $scope.dish = {DateExpiration: new Date(),
+                   PickUpStartTime: new Date(),
+                    PickUpEndTime: new Date()};
+    $scope.hstep = 1;
+    $scope.mstep = 5;
+    $scope.ismeridian = false;
+    $scope.dateOptions = {
+        minDate: new Date(),
+        showWeeks: true
+      };
+
     // function to submit the form after all validation has occurred            
   	$scope.submitCreateDish = function(isValid) {
 
