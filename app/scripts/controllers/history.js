@@ -26,6 +26,9 @@
 
     $scope.sellList = [];
     $scope.buyList = [];
+    $scope.sortType = "DateCreate";
+    $scope.sortReverse = false;
+    $scope.search = '';
 
     var createSellList = function (customlist){
         for (var i = customlist.length - 1; i >= 0; i--) {
@@ -55,6 +58,22 @@
                 DateCreate: current.DateCreate,
              });
         }
+    }
+
+    $scope.cancelButton = function(model){
+        console.log("CANCEL.");
+    }
+
+    $scope.acceptButton = function(model){
+        console.log("ACCEPT.");
+    }
+
+    $scope.refuseButton = function(model){
+        console.log("REFUSE.");
+    }
+
+    $scope.doneButton = function(model){
+        console.log("DONE.");
     }
 
     $http(request).then(function successCallback(response) {

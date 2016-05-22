@@ -27,7 +27,7 @@
 					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
 					<td>{{ model.DateCreate }}</td>
 					<td>
-						<button ng-show="model.Statut == 'In progress' || model.Statut == 'Accept'">Cancel</button>
+						<button ng-click="cancelButton(model)" ng-show="model.Statut == 'In progress' || model.Statut == 'Accept'">Cancel</button>
 					</td>
 				</tr>
 			</tbody>
@@ -61,10 +61,10 @@
 					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
 					<td>{{ model.Dish.DateCreate }}</td>
 					<td>
-						<button ng-show="model.Statut == 'In progress'">Accept</button>
-						<button ng-show="model.Statut == 'In progress'">Refuse</button>
-						<button ng-show="model.Statut == 'Accept'">Cancel</button>
-						<button ng-show="model.Statut == 'Accept'">Done</button>
+						<button ng-click="acceptButton(model)" ng-show="model.Statut == 'In progress'">Accept</button>
+						<button ng-click="refuseButton(model)" ng-show="model.Statut == 'In progress'">Refuse</button>
+						<button ng-click="cancelButton(model)" ng-show="model.Statut == 'Accept'">Cancel</button>
+						<button ng-click="doneButton(model)" ng-show="model.Statut == 'Accept'">Done</button>
 					</td>
 				</tr>
 			</tbody>
