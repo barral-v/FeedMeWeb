@@ -24,19 +24,58 @@
         }
     };
 
+    $scope.sellList = [];
+    $scope.buyList = [];
+
+    var createSellList = function (customlist){
+        for (var i = customlist.length - 1; i >= 0; i--) {
+             
+             var current = customlist[i];
+
+             sellList.push({
+                OrderId: current.OrderId,
+                Dish: current.Dish,
+                Statut: current.Statut,
+                ValidationCode: current.ValidationCode,
+                DateCreate: current.DateCreate,
+             });
+        }
+    }
+
+    var createBuyList = function (customlist){
+        for (var i = customlist.length - 1; i >= 0; i--) {
+             
+             var current = customlist[i];
+
+             buyList.push({
+                OrderId: current.OrderId,
+                Dish: current.Dish,
+                Statut: current.Statut,
+                ValidationCode: current.ValidationCode,
+                DateCreate: current.DateCreate,
+             });
+        }
+    }
+
     $http(request).then(function successCallback(response) {
         var data = angular.fromJson(response.data);
         var buy = data.Buy;
         var sell = data.Sell;
-        $scope.sellAccept = sell.Accept;
-        $scope.sellDone = sell.Done;
-        $scope.sellRefuse = sell.Refuse;
-        $scope.sellCancel = sell.Cancel;
-        $scope.sellFinish = sell.Finish;
-        $scope.buyAccept = buy.Accept;
-        $scope.buyDone = buy.Done;
-        $scope.buyRefuse = buy.Refuse;
-        $scope.buyCancel = buy.Cancel;
+
+
+        createSellList(sell["In progress"]);
+        createSellList(sell["Accept"]);
+        createSellList(sell["Done"]);
+        createSellList(sell["Refuse"]);
+        createSellList(sell["Cancel"]);
+        createSellList(sell["To valid"]);
+
+
+        createBuyList(buy["In progress"]);
+        createBuyList(buy["Accept"]);
+        createBuyList(buy["Done"]);
+        createBuyList(buy["Refuse"]);
+        createBuyList(buy["Cancel"]);
 
     }, function errorCallback(response) {
 
