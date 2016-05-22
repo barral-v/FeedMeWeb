@@ -32,7 +32,7 @@
              
              var current = customlist[i];
 
-             sellList.push({
+             $scope.sellList.push({
                 OrderId: current.OrderId,
                 Dish: current.Dish,
                 Statut: current.Statut,
@@ -47,7 +47,7 @@
              
              var current = customlist[i];
 
-             buyList.push({
+             $scope.buyList.push({
                 OrderId: current.OrderId,
                 Dish: current.Dish,
                 Statut: current.Statut,

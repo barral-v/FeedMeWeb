@@ -2,45 +2,77 @@
 	<h2>Historique</h2>
 	<div class="col-sm-12">
 		<h3>Achat</h3>
-		<div ng-repeat="model in buyAccept track by model.OrderId" class="col-sm-12">
+		<!-- <div ng-repeat="model in buyList track by model.OrderId" class="col-sm-12">
 			<span class="col-sm-6">Accepté</span>
 			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
-		<div ng-repeat="model in buyDone track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Terminé</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
-		<div ng-repeat="model in buyRefuse track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Refusé</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
-		<div ng-repeat="model in buyCancel track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Annulé</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
+		</div> -->
+		<table class="table table-bordered table-striped">
+			
+			<thead>
+				<tr>
+					<td>
+						Statut
+					</td>
+					<td>
+						Nom du plat
+					</td>
+					<td>
+						Date de création
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr ng-repeat="model in buyList track by model.OrderId">
+					<td>{{ model.Statut }}</td>
+					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
+					<td>{{ model.Dish.DateCreate }}</td>
+					<td></td>
+				</tr>
+			</tbody>
+			
+		</table>
 	</div>
 	<div class="col-sm-12">
 		<h3>Vente</h3>
-		<div ng-repeat="model in sellAccept track by model.OrderId" class="col-sm-12">
+<!-- 		<div ng-repeat="model in sellList track by model.OrderId" class="col-sm-12">
 			<span class="col-sm-6">Accepté</span>
 			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
- 		<div ng-repeat="model in sellDone track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Terminé</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
-		<div ng-repeat="model in sellRefuse track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Refusé</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
-		<div ng-repeat="model in sellCancel track by model.OrderId" class="col-sm-12">
-			<span class="col-sm-6">Annulé</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Dish.Name}}</span></a>
-		</div>
-		<div ng-repeat="model in sellFinish track by model.DishId" class="col-sm-12">
-			<span class="col-sm-6">Expiré</span>
-			<a href="#/detaildish/{{model.DishId}}"><span class="col-sm-6">{{model.Name}}</span></a>
-		</div> 
+		</div> -->
+		<table class="table table-bordered table-striped">
+			
+			<thead>
+				<tr>
+					<td>
+						Statut
+					</td>
+					<td>
+						Nom du plat
+					</td>
+					<td>
+						Date de création
+					</td>
+					<td>
+						
+					</td>
+				</tr>
+			</thead>
+			
+			<tbody>
+				<tr ng-repeat="model in buyList track by model.OrderId">
+					<td>{{ model.Statut }}</td>
+					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
+					<td>{{ model.Dish.DateCreate }}</td>
+					<td></td>
+				</tr>
+			</tbody>
+			
+		</table>
+
 	</div>
 	
-</div>
+
+	
