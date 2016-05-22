@@ -8,7 +8,7 @@
  * Controller of the feedMeWebApp
  */
  angular.module('feedMeWebApp')
- .controller('HistoryCtrl', ['$cookies', '$scope', '$location', '$http', function  ($cookies, $scope, $location, $http) {
+ .controller('HistoryCtrl', ['$route', '$cookies', '$scope', '$location', '$http', function  ($route, $cookies, $scope, $location, $http) {
 
     if (!$cookies.get("feedmetoken")){ 
         $location.path('/').replace(); 
@@ -61,19 +61,79 @@
     }
 
     $scope.cancelButton = function(model){
-        console.log("CANCEL.");
+        var url = 'http://163.5.84.232/WebService/api/Dishes/Cancel?id=';
+        url += String(model.OrderId);
+
+        var request = {
+          method: 'POST',
+          url: url,
+          headers: {
+                'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+            },
+        };
+
+        $http(request).then(function successCallback(response) {
+          $route.reload();
+        }, function errorCallback(response) {
+          console.log(response);
+        });
     }
 
     $scope.acceptButton = function(model){
-        console.log("ACCEPT.");
+        var url = 'http://163.5.84.232/WebService/api/Dishes/Accept?id=';
+        url += String(model.OrderId);
+
+        var request = {
+          method: 'POST',
+          url: url,
+          headers: {
+                'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+            },
+        };
+
+        $http(request).then(function successCallback(response) {
+          $route.reload();
+        }, function errorCallback(response) {
+          console.log(response);
+        });
     }
 
     $scope.refuseButton = function(model){
-        console.log("REFUSE.");
+        var url = 'http://163.5.84.232/WebService/api/Dishes/Refuse?id=';
+        url += String(model.OrderId);
+
+        var request = {
+          method: 'POST',
+          url: url,
+          headers: {
+                'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+            },
+        };
+
+        $http(request).then(function successCallback(response) {
+          $route.reload();
+        }, function errorCallback(response) {
+          console.log(response);
+        });
     }
 
     $scope.doneButton = function(model){
-        console.log("DONE.");
+        var url = 'http://163.5.84.232/WebService/api/Dishes/Done?id=';
+        url += String(model.OrderId) + "&validationCode=" + String(model.ValidationCode);
+
+        var request = {
+          method: 'POST',
+          url: url,
+          headers: {
+                'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+            },
+        };
+
+        $http(request).then(function successCallback(response) {
+          $route.reload();
+        }, function errorCallback(response) {
+          console.log(response);
+        });
     }
 
     $http(request).then(function successCallback(response) {

@@ -50,17 +50,20 @@
 	    if (isValid) {
 
 	    	var data = {DishId: $scope.dish.DishId,
-	    		UtilisateurIdBuyer: 1,
 	    		NbPart: $scope.nbPart,
 	    		TotalPrice: $scope.nbPart * $scope.dish.Price,
-	    		DateExpiration: $scope.validateDate,
-	    		Statut: "En cours"};
+	    		DateExpiration: $scope.dish.DateExpiration,
+	    		PickUpTime: $scope.dish.DateExpiration,
+	    		Statut: "In progress"};
 
 	    		$http({
 	    			method: 'POST', 
 	    			url: url2, 
 	    			data: data,
-	    			headers: {'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),}
+	    			headers: {
+	    				'Content-Type': 'application/json;charset=utf-8',
+	    				'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+	    			},
 	    		}).then(function successCallback(response) {
 	    			response = response;
 	    		});
