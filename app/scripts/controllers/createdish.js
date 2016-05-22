@@ -7,17 +7,21 @@
  * # LoginrouteCtrl
  * Controller of the feedMeWebApp
  */
-var app = angular.module('feedMeWebApp');
+ var app = angular.module('feedMeWebApp');
  
-app.controller('CreatedishCtrl', ['$location', '$cookies', '$http', '$scope', function ($location, $cookies, $http, $scope) {
+ app.controller('CreatedishCtrl', ['$location', '$cookies', '$http', '$scope', function ($location, $cookies, $http, $scope) {
 
-	$scope.showDishPosition = function (position) {
+    if (!$cookies.get("feedmetoken")){ 
+        $location.path('/').replace(); 
+    }
+
+    $scope.showDishPosition = function (position) {
         $scope.lat = position.coords.latitude;
         $scope.lng = position.coords.longitude;
         $scope.$apply();
     }
 
-  	$scope.getDishLocation = function () {
+    $scope.getDishLocation = function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition($scope.showDishPosition, $scope.showError);
         }
@@ -26,58 +30,59 @@ app.controller('CreatedishCtrl', ['$location', '$cookies', '$http', '$scope', fu
         }
     }
 
-    $scope.dish = {DateExpiration: new Date(),
-                   PickUpStartTime: new Date(),
-                    PickUpEndTime: new Date()};
-    $scope.hstep = 1;
-    $scope.mstep = 5;
-    $scope.ismeridian = false;
-    $scope.dateOptions = {
-        minDate: new Date(),
-        showWeeks: true
-      };
+    $scope.dish = {
+        DateExpiration: new Date(),
+        PickUpStartTime: new Date(),
+        PickUpEndTime: new Date()};
+        $scope.hstep = 1;
+        $scope.mstep = 5;
+        $scope.ismeridian = false;
+        $scope.dateOptions = {
+            minDate: new Date(),
+            showWeeks: true
+        };
 
     // function to submit the form after all validation has occurred            
-  	$scope.submitCreateDish = function(isValid) {
+    $scope.submitCreateDish = function(isValid) {
 
 	    // check to make sure the form is completely valid
 	    if (isValid) {
 
-	      	var dish = $scope.dish;
+            var dish = $scope.dish;
 
-	      	$scope.getDishLocation();
+            $scope.getDishLocation();
 
             dish.Address = {
                 Latitude: $scope.lat,
                 Longitude: $scope.lng,
             }
             dish.Status = "In progress";
-        	
-        	var url = 'http://163.5.84.232/WebService/api/Dishes';
 
-        	var request = {
+            var url = 'http://163.5.84.232/WebService/api/Dishes';
+
+            var request = {
               method: 'POST',
               url: url,
               data: dish,
               headers: {
                 'Content-Type': 'application/json;charset=utf-8',
                 'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
-              },
+            },
+        }
+
+        $http(request).then(function successCallback(response) {
+            $location.path('/map').replace();
+        }, function errorCallback(response) {
+            console.log(response);
+            if (response.statusText == "Not Found"){
+                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe"                
             }
+            else{
+                $scope.requestError = response.data.error
+            }
+        });
+    }
 
-            $http(request).then(function successCallback(response) {
-                $location.path('/map').replace();
-            }, function errorCallback(response) {
-                console.log(response);
-                if (response.statusText == "Not Found"){
-                    $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe"                
-                }
-                else{
-                    $scope.requestError = response.data.error
-                }
-            });
-	    }
-
-  	};
-  }]);
+};
+}]);
 

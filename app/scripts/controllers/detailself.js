@@ -11,6 +11,10 @@
 
  app.controller('DetailselfCtrl', ['$cookies', '$scope', '$http', function  ($cookies, $scope, $http) {
 
+      if (!$cookies.get("feedmetoken")){ 
+        $location.path('/').replace(); 
+      } 
+
  	var url = 'http://163.5.84.232/WebService/api/Account/UserInfo';
 
  	var request = {

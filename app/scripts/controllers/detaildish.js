@@ -11,6 +11,10 @@ var app = angular.module('feedMeWebApp');
  
 app.controller('DetaildishCtrl', ['$cookies', '$scope', '$routeParams', '$http', function ($cookies, $scope, $routeParams, $http) {
 	
+	if (!$cookies.get("feedmetoken")){ 
+        $location.path('/').replace(); 
+    }
+
 	var url = 'http://163.5.84.232/WebService/api/Dishes/' + $routeParams.dishId;
 	var url2 = 'http://163.5.84.232/WebService/api/Orders';
 

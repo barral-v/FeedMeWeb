@@ -8,5 +8,10 @@
  * Controller of the feedMeWebApp
  */
 angular.module('feedMeWebApp')
-  .controller('HistoryCtrl', function () {
-  });
+  .controller('HistoryCtrl', '$cookies', '$scope', '$location', '$http', function  ($cookies, $scope, $location, $http) {
+  
+        if (!$cookies.get("feedmetoken")){ 
+            $location.path('/').replace(); 
+        } 
+
+  }]);
