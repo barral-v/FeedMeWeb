@@ -9,7 +9,7 @@
  */
  var app = angular.module('feedMeWebApp');
 
- app.controller('DetailselfCtrl', ['$cookies', '$scope', '$http', function  ($cookies, $scope, $http) {
+ app.controller('DetailselfCtrl', ['$cookies', '$scope', '$http', '$location', function  ($cookies, $scope, $http, $location) {
 
       if (!$cookies.get("feedmetoken")){ 
         $location.path('/').replace(); 

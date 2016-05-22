@@ -19,7 +19,7 @@
         $scope.lat = position.coords.latitude;
         $scope.lng = position.coords.longitude;
         $scope.$apply();
-    }
+    };
 
     $scope.getDishLocation = function () {
         if (navigator.geolocation) {
@@ -28,7 +28,7 @@
         else {
             $scope.error = "La géolocalisation n'est pas supportée par votre navigateur.";
         }
-    }
+    };
 
     $scope.dish = {
         DateExpiration: new Date(),
@@ -55,7 +55,7 @@
             dish.Address = {
                 Latitude: $scope.lat,
                 Longitude: $scope.lng,
-            }
+            };
             dish.Status = "In progress";
 
             var url = 'http://163.5.84.232/WebService/api/Dishes';
@@ -68,17 +68,18 @@
                 'Content-Type': 'application/json;charset=utf-8',
                 'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
             },
-        }
+        };
 
         $http(request).then(function successCallback(response) {
             $location.path('/map').replace();
+            response = response;
         }, function errorCallback(response) {
             console.log(response);
-            if (response.statusText == "Not Found"){
-                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe"                
+            if (response.statusText === "Not Found"){
+                $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe";
             }
             else{
-                $scope.requestError = response.data.error
+                $scope.requestError = response.data.error;
             }
         });
     }
