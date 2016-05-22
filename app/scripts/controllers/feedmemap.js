@@ -96,17 +96,17 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
 
     $http(request).then(function successCallback(response) {
 
-        var geocoder = new google.maps.Geocoder();
+        // var geocoder = new google.maps.Geocoder();
         var data = response.data;
 
-        var coords = {longitude: parseFloat("0"),
-                     latitude: parseFloat("0")};
+        // var coords = {longitude: parseFloat("0"),
+        //              latitude: parseFloat("0")};
 
         for (var i = 0; i < data.length; i++){
     
             var dish = data[i];
 
-            if (dish.Statut == "In progress"){
+            if (dish.Statut === "In progress"){
 
                 
 
@@ -123,8 +123,8 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
                             }
                         });   
                 } else{
-                    var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address="
-                    geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA"
+                    var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+                    geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA";
 
                     $http.get(geourl).success((function(dish) {
                         return function(data) {
@@ -140,7 +140,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
                                     latitude: parseFloat(results[0].geometry.location.lat),
                                 }
                             });
-                        }
+                        };
                     })(dish));
                 }
             }
@@ -152,7 +152,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
 
             console.log(response);
         
-            if (response.statusText == "Not Found"){
+            if (response.statusText === "Not Found"){
                 $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe";                
             }
         

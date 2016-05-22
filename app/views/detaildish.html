@@ -42,19 +42,22 @@
                             <!-- button -->
                             <div class="row">
                                 <!-- DATE -->
-                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
-                                    <input type="date" name="validateDate" placeholder="Date (aaaa-mm-jj)" class="form-control" ng-model="validateDate" required>
+                                <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
+                                    <div class="col-sm-6">Choisissez la date à laquelle vous récupèrerez votre plat:</div>
+                                    <uib-datepicker class="col-sm-6" name="validateDate" ng-model="dish.DateExpiration" class="well well-sm" datepicker-options="dateOptions" required></uib-datepicker>
                                     <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
-                                        <p class="help-block" ng-message="required">Donnez une date de visite</p>
-                                        <p class="help-block" ng-message="date">La date que vous avez entré n'est pas valide veuillez entre la sous ce format aaaa-mm-jj</p>
+                                        <p class="help-block" ng-message="required">Donnez une date limite à votre offre</p>
+                                        <p class="help-block" ng-message="date">La date que vous avez entrée n'est pas valide veuillez l'entrer sous ce format: aaaa-mm-jj</p>
                                     </div>
                                 </div>
+
                                 <!-- TIME -->
-                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
-                                    <input type="time" name="validateTime" placeholder="Heure (hh:mm)" class="form-control" ng-model="validateTime" required>
+                                <div class="col-sm-12 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
+                                    <div class="col-sm-6">Heure de récupération du plat</div>
+                                    <uib-timepicker class="col-sm-3" name="validateTime" ng-model="dish.DateExpiration" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
                                     <div ng-messages="dishForm.validateTime.$error" ng-show="dishForm.validateTime.$touched">
-                                        <p class="help-block" ng-message="required">Donnez une heure devisite</p>
-                                        <p class="help-block" ng-message="time">La date que vous avez entré n'est pas valide vauillez entre la sous ce format hh:mm</p>
+                                        <p class="help-block" ng-message="required">Donnez une heure de visite</p>
+                                        <p class="help-block" ng-message="time">La date que vous avez entrée n'est pas valide veuillez l'entrer sous ce format: hh:mm</p>
                                     </div>
                                 </div>
                             </div>
