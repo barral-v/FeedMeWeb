@@ -108,41 +108,25 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
 
             if (dish.Statut === "In progress"){
 
-                
+                var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+                geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA";
 
-                if (dish.Address.Latitude && dish.Address.Longitude){
-                    $scope.listMarkers.push({  
+                $http.get(geourl).success((function(dish) {
+                    return function(data) {
+                        var results = data.results;
+                        $scope.listMarkers.push({  
                             title: dish.Name, 
                             id: dish.DishId,
                             price: dish.Price,
                             nbpart: dish.NbPart,
                             events: {click: clickMarker},
                             coords: {
-                                longitude: parseFloat(dish.Address.Longitude),
-                                latitude: parseFloat(dish.Address.Latitude),
+                                longitude: parseFloat(results[0].geometry.location.lng),
+                                latitude: parseFloat(results[0].geometry.location.lat),
                             }
-                        });   
-                } else{
-                    var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-                    geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA";
-
-                    $http.get(geourl).success((function(dish) {
-                        return function(data) {
-                            var results = data.results;
-                            $scope.listMarkers.push({  
-                                title: dish.Name, 
-                                id: dish.DishId,
-                                price: dish.Price,
-                                nbpart: dish.NbPart,
-                                events: {click: clickMarker},
-                                coords: {
-                                    longitude: parseFloat(results[0].geometry.location.lng),
-                                    latitude: parseFloat(results[0].geometry.location.lat),
-                                }
-                            });
-                        };
-                    })(dish));
-                }
+                        });
+                    };
+                })(dish));
             }
         }
     

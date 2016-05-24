@@ -56,7 +56,7 @@
 			</thead>
 
 			<tbody>
-				<tr ng-repeat="model in buyList track by model.OrderId">
+				<tr ng-repeat="model in sellList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Dish.Name }}</a></td>
 					<td>{{ model.Dish.DateCreate }}</td>

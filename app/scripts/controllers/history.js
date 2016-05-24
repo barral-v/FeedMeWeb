@@ -61,7 +61,7 @@
     }
 
     $scope.cancelButton = function(model){
-        var url = 'http://163.5.84.232/WebService/api/Dishes/Cancel?id=';
+        var url = 'http://163.5.84.232/WebService/api/Orders/Cancel?id=';
         url += String(model.OrderId);
 
         var request = {
@@ -80,7 +80,7 @@
     }
 
     $scope.acceptButton = function(model){
-        var url = 'http://163.5.84.232/WebService/api/Dishes/Accept?id=';
+        var url = 'http://163.5.84.232/WebService/api/Orders/Accept?id=';
         url += String(model.OrderId);
 
         var request = {
@@ -99,7 +99,7 @@
     }
 
     $scope.refuseButton = function(model){
-        var url = 'http://163.5.84.232/WebService/api/Dishes/Refuse?id=';
+        var url = 'http://163.5.84.232/WebService/api/Orders/Refuse?id=';
         url += String(model.OrderId);
 
         var request = {
@@ -118,7 +118,7 @@
     }
 
     $scope.doneButton = function(model){
-        var url = 'http://163.5.84.232/WebService/api/Dishes/Done?id=';
+        var url = 'http://163.5.84.232/WebService/api/Orders/Done?id=';
         url += String(model.OrderId) + "&validationCode=" + String(model.ValidationCode);
 
         var request = {

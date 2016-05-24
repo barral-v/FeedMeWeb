@@ -34,10 +34,10 @@
         DateExpiration: new Date(),
         PickUpStartTime: new Date(),
         PickUpEndTime: new Date()};
-        $scope.hstep = 1;
-        $scope.mstep = 5;
-        $scope.ismeridian = false;
-        $scope.dateOptions = {
+    $scope.hstep = 1;
+    $scope.mstep = 5;
+    $scope.ismeridian = false;
+    $scope.dateOptions = {
             minDate: new Date(),
             showWeeks: true
         };
@@ -52,10 +52,8 @@
 
             $scope.getDishLocation();
 
-            dish.Address = {
-                Latitude: $scope.lat,
-                Longitude: $scope.lng,
-            };
+            dish.Address.Latitude = $scope.lat;
+            dish.Address.Longitude = $scope.lng;
             dish.Status = "In progress";
 
             var url = 'http://163.5.84.232/WebService/api/Dishes';

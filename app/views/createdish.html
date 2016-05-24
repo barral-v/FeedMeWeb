@@ -58,6 +58,14 @@
                                     </div>
                                 </div>
 
+                                <!-- DISH Address -->
+                                <div class="form-group" ng-class="{ 'has-error' : dishForm.address.$invalid && dishForm.address.$touched }">
+                                    <input type="text" name="address" placeholder="Adresse" class="form-control" ng-model="dish.Address.Road" required>
+                                    <div ng-messages="dishForm.address.$error" ng-show="dishForm.address.$touched">
+                                        <p class="help-block" ng-message="required">Veuillez entrer une adresse où venir cherchre votre plat</p>
+                                    </div>
+                                </div>
+
                                 <!-- ENDDATE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
                                     <div class="col-sm-6">Choisissez la date à laquelle votre plat sera disponible</div>

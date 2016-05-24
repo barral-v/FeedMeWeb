@@ -36,7 +36,24 @@
               var data = response.data;
               if (data.access_token){
                 $cookies.put("feedmetoken", data.access_token);
-                $location.path('/map').replace();
+                var url2 = 'http://163.5.84.232/WebService/api/Account/UserInfo';
+                var request2 = {
+                    method: 'GET',
+                    url: url2,
+                    headers:    {
+                        'Content-Type': 'application/json;charset=utf-8',
+                        'Authorization': 'Bearer '+ data.access_token,
+                    },
+                };
+                $http(request2).then(function successCallback(response) {
+                    $cookies.put("feedmeid", response.data.User.Id);
+                    $location.path('/map').replace();
+                }, function errorCallback(response) {
+                    console.log(response);
+                    if (response.statusText === "Not Found"){
+                        $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe";
+                    }
+                });                
             }
             else{
                 $scope.requestError = "Le mot de passe ou l'identifiant est invalide";
