@@ -68,7 +68,7 @@
 
                                 <!-- ENDDATE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
-                                    <div class="col-sm-6">Choisissez la date à laquelle votre plat sera disponible</div>
+                                    <div class="col-sm-6">Choisissez la date à laquelle votre plat ne sera plus disponible</div>
                                     <uib-datepicker class="col-sm-6" name="validateDate" ng-model="dish.DateExpiration" class="well well-sm" datepicker-options="dateOptions" required></uib-datepicker>
                                     <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
                                         <p class="help-block" ng-message="required">Donnez une date limite à votre offre</p>
