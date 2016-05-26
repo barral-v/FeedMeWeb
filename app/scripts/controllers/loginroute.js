@@ -66,7 +66,7 @@
                 }
                 else
                 {
-                    $scope.requestError = response.data.error;
+                    $scope.requestError = response.data.error_description;
                 }
             });
         }

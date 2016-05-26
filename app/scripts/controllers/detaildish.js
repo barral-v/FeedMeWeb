@@ -66,6 +66,7 @@
 	    			},
 	    		}).then(function successCallback(response) {
 	    			response = response;
+	    			$location.path('/map').replace();
 	    		});
 
 	    	}

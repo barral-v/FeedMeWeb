@@ -70,7 +70,6 @@
 
         $http(request).then(function successCallback(response) {
             $location.path('/map').replace();
-            response = response;
         }, function errorCallback(response) {
             console.log(response);
             if (response.statusText === "Not Found"){

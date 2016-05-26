@@ -137,7 +137,10 @@
     }
 
     $http(request).then(function successCallback(response) {
-        var data = angular.fromJson(response.data);
+        var str = response.data;
+        var sliced = str.slice(0,-1);
+        var finnished = sliced.replace(/\"/g,'"');
+        var data = angular.fromJson(finnished);
         var buy = data.Buy;
         var sell = data.Sell;
 
