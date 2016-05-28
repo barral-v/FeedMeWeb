@@ -11,7 +11,7 @@ var app = angular.module('feedMeWebApp');
  
 
 app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function  ($cookies, $scope, $location, $http) {
-
+    
     if (!$cookies.get("feedmetoken")){ 
         $location.path('/').replace(); 
     } 

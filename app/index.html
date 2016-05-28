@@ -27,7 +27,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="header">
+    <div class="header" ng-controller="HeaderCtrl">
       <div class="navbar navbar-default" role="navigation">
         <div class="container">
           <div class="navbar-header">
@@ -42,13 +42,13 @@
             <a class="navbar-brand" href="#/">feedMeWeb</a>
           </div>
 
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
+          <div class="collapse navbar-collapse" id="js-navbar-collapse" ng-if="$root.userConnected">
 
             <ul class="nav navbar-nav">
               <li class="active"><a href="#/map">Carte</a></li>
               <li><a ng-href="#/detailself">Mon Compte</a></li>
               <li><a ng-href="#/history">Mon Historique</a></li>
-              <li><a ng-href="#/">Logout</a></li>
+              <li><a ng-href="#/" ng-click="logout()">Logout</a></li>
             </ul>
           </div>
         </div>

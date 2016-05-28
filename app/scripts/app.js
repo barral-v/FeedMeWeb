@@ -82,4 +82,14 @@ angular
         key: 'AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA',
         libraries: 'weather,geometry,visualization'
     });
-  });
+  }).value('userConnected', false).controller('HeaderCtrl', ['$rootScope', '$cookies', '$scope', function ($rootScope, $cookies, $scope) {
+
+    $scope.logout = function(){
+        if ($cookies.get("feedmetoken")){ 
+            $cookies.remove("feedmetoken");
+            $rootScope.userConnected = false;
+        }
+    }
+
+
+  }]);

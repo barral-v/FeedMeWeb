@@ -137,27 +137,22 @@
     }
 
     $http(request).then(function successCallback(response) {
-        var str = response.data;
-        var sliced = str.slice(0,-1);
-        var finnished = sliced.replace(/\"/g,'"');
-        var data = angular.fromJson(finnished);
+        var data = response.data;
         var buy = data.Buy;
         var sell = data.Sell;
 
-
-        createSellList(sell["In progress"]);
         createSellList(sell["Accept"]);
+        createSellList(sell["Cancel"]);
         createSellList(sell["Done"]);
         createSellList(sell["Refuse"]);
-        createSellList(sell["Cancel"]);
         createSellList(sell["To valid"]);
 
 
-        createBuyList(buy["In progress"]);
         createBuyList(buy["Accept"]);
-        createBuyList(buy["Done"]);
-        createBuyList(buy["Refuse"]);
         createBuyList(buy["Cancel"]);
+        createBuyList(buy["Done"]);
+        createBuyList(buy["In progress"]);
+        createBuyList(buy["Refuse"]);
 
     }, function errorCallback(response) {
 

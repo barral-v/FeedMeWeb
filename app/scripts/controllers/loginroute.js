@@ -9,7 +9,7 @@
  */
  var app = angular.module('feedMeWebApp');
  
- app.controller('LoginrouteCtrl', ['$cookies', '$scope', '$location', '$http', function ($cookies, $scope, $location, $http) {
+ app.controller('LoginrouteCtrl', ['$rootScope', '$cookies', '$scope', '$location', '$http', function ($rootScope, $cookies, $scope, $location, $http) {
     // function to submit the form after all validation has occurred            
     $scope.submit = function(isValid) {
 	    // check to make sure the form is completely valid
@@ -47,6 +47,7 @@
                 };
                 $http(request2).then(function successCallback(response) {
                     $cookies.put("feedmeid", response.data.User.Id);
+                    $rootScope.userConnected = true;
                     $location.path('/map').replace();
                 }, function errorCallback(response) {
                     console.log(response);
