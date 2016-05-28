@@ -6,6 +6,10 @@
     color: #A94442;
 }
 
+.red-border{
+    border: 2px solid #A94442;
+}
+
 .angular-google-map-container { height: 800px; }
 
 

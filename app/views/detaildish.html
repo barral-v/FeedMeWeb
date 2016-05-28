@@ -29,12 +29,39 @@
                                     <span class="dish-description">{{dish.SizePart}} grammes par parts</span>
                                 </div>
                             </div>
-                            <div class="row text-center">
-                                <span class="dish-description">{{dish.Statut}}</span>
-                            </div>
-                            <div class="row text-center">
-                                <span class="dish-description">{{dish.DateExpiration}}</span>
-                            </div>
+                                <div class="row">
+                                    <div class="col-sm-offset-3 col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="monday" disabled>
+                                        <span>Monday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="tuesday" disabled>
+                                        <span>Tuesday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="wednesday" disabled>
+                                        <span>Wednesday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="thursday" disabled>
+                                        <span>Thursday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="friday" disabled>
+                                        <span>Friday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="saturday" disabled>
+                                        <span>Saturday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="sunday" disabled>
+                                        <span>Sunday</span>
+                                    </div>
+                                    <div class="col-sm-12" ng-show="daysError">
+                                        <p class="help-block red">Please choose at least a day</p>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                     <div class="row" style="margin-top: 30px;">
@@ -44,7 +71,7 @@
                                 <!-- DATE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
                                     <div class="col-sm-6">Choisissez la date à laquelle vous récupèrerez votre plat:</div>
-                                    <uib-datepicker class="col-sm-6" name="validateDate" ng-model="dish.DateExpiration" class="well well-sm" datepicker-options="dateOptions" required></uib-datepicker>
+                                    <uib-datepicker class="col-sm-6" name="validateDate" ng-model="DateExpiration" class="well well-sm" datepicker-options="dateOptions" required></uib-datepicker>
                                     <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
                                         <p class="help-block" ng-message="required">Donnez une date limite à votre offre</p>
                                         <p class="help-block" ng-message="date">La date que vous avez entrée n'est pas valide veuillez l'entrer sous ce format: aaaa-mm-jj</p>
@@ -54,7 +81,7 @@
                                 <!-- TIME -->
                                 <div class="col-sm-12 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
                                     <div class="col-sm-6">Heure de récupération du plat</div>
-                                    <uib-timepicker class="col-sm-3" name="validateTime" ng-model="dish.DateExpiration" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
+                                    <uib-timepicker class="col-sm-3" name="validateTime" ng-model="DateExpiration" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
                                     <div ng-messages="dishForm.validateTime.$error" ng-show="dishForm.validateTime.$touched">
                                         <p class="help-block" ng-message="required">Donnez une heure de visite</p>
                                         <p class="help-block" ng-message="time">La date que vous avez entrée n'est pas valide veuillez l'entrer sous ce format: hh:mm</p>

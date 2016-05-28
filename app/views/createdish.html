@@ -74,34 +74,58 @@
                                     </div>
                                 </div>
 
+                                <!-- DAYS -->
+                                <div class="form-group col-sm-12" ng-class="{ 'red-border' : daysError }">
+                                    <div class="col-sm-12">Choose your disponibility day(s)</div>
+                                    <div class="col-sm-offset-3 col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="monday">
+                                        <span>Monday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="tuesday">
+                                        <span>Tuesday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="wednesday">
+                                        <span>Wednesday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="thursday">
+                                        <span>Thursday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="friday">
+                                        <span>Friday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="saturday">
+                                        <span>Saturday</span>
+                                    </div>
+                                    <div class="col-sm-1">
+                                        <input type="checkbox" class="form-control" ng-model="sunday">
+                                        <span>Sunday</span>
+                                    </div>
+                                    <div class="col-sm-12" ng-show="daysError">
+                                        <p class="help-block red">Please choose at least a day</p>
+                                    </div>
+                                </div>
+
                                 <!-- ENDDATE -->
-                                <div class="form-group col-sm-12" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
+                                <div class="form-group col-sm-12">
                                     <div class="col-sm-6">Choisissez la date à laquelle votre plat ne sera plus disponible</div>
                                     <uib-datepicker class="col-sm-6" name="validateDate" ng-model="dish.DateExpiration" class="well well-sm" datepicker-options="dateOptions" required></uib-datepicker>
-                                    <div ng-messages="dishForm.validateDate.$error" ng-show="dishForm.validateDate.$touched">
-                                        <p class="help-block" ng-message="required">Donnez une date limite à votre offre</p>
-                                        <p class="help-block" ng-message="date">La date que vous avez entré n'est pas valide veuillez entre la sous ce format aaaa-mm-jj</p>
-                                    </div>
                                 </div>
 
                                 <!-- PICKUPSTARTTIME -->
-                                <div class="col-sm-12 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
+                                <div class="col-sm-12 form-group">
                                     <div class="col-sm-6">Heure de début de disponibilité de votre plat</div>
                                     <uib-timepicker class="col-sm-3" name="validateTime" ng-model="dish.PickUpStartTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
-                                    <div ng-messages="dishForm.validateTime.$error" ng-show="dishForm.validateTime.$touched">
-                                        <p class="help-block" ng-message="required">Donnez une heure de visite</p>
-                                        <p class="help-block" ng-message="time">La date que vous avez entré n'est pas valide veuillez entre la sous ce format hh:mm</p>
-                                    </div>
                                 </div>
 
                                 <!-- PICKUPENDTIME-->
-                                <div class="col-sm-12 form-group" ng-class="{ 'has-error' : dishForm.endTime.$invalid && dishForm.endTime.$touched }">
+                                <div class="col-sm-12 form-group">
                                     <div class="col-sm-6">Heure de fin de disponibilité de votre plat</div>
                                     <uib-timepicker class="col-sm-3" name="endTime" ng-model="dish.PickUpEndTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
-                                    <div ng-messages="dishForm.endTime.$error" ng-show="dishForm.endTime.$touched">
-                                        <p class="help-block" ng-message="required">Donnez une heure de visite</p>
-                                        <p class="help-block" ng-message="time">La date que vous avez entré n'est pas valide veuillez entre la sous ce format hh:mm</p>
-                                    </div>
                                 </div>
 
                                 <!-- VALIDATION -->
