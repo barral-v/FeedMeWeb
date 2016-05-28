@@ -8,14 +8,19 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="row text-center">
-                                <span class="dish-description">{{dish.Name}}</span>
-                            </div>
-                            <div class="row text-center">
-                                <span>{{dish.Utilisateur.Name}}</span>
-                            </div>
-                            <div class="row text-center">
-                                <span class="dish-description">{{dish.Description}}</span>
+                            <div class="row">
+                                <div class="col-sm-3" style="height:200px; border: 1px solid black;">
+                                    <img src="{{dish.Image}}" alt="img">
+                                </div>
+
+                                <div class="col-sm-9">
+                                    <div class="row text-center">
+                                        <span class="dish-description">{{dish.Name}}</span>
+                                    </div>
+                                    <div class="row text-center">
+                                        <span class="dish-description">{{dish.Description}}</span>
+                                    </div>                                
+                                </div>                                
                             </div>
 
                             <div class="row">
