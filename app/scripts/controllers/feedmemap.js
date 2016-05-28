@@ -16,7 +16,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
         $location.path('/').replace(); 
     } 
 
-    var url = 'http://163.5.84.232/WebService/api/Dishes?page=map';
+    var url = 'http://163.5.84.232/WebService/api/Dishes';
 
     $scope.lat = "0";
     $scope.lng = "0";
@@ -28,6 +28,12 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
                         NbPart: 0,
                         DishId: 0};
     $scope.listMarkers = [];
+    $scope.selfMarker = {
+        coords: null,
+        options: {
+            icon: "https://maps.google.com/mapfiles/kml/shapes/schools_maps.png"
+        }
+    }
 
 
     var clickMarker = function(gmarker_instance, event_name, marker){  
@@ -46,6 +52,10 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
     $scope.showPosition = function (position) {
         $scope.lat = position.coords.latitude;
         $scope.lng = position.coords.longitude;
+        if ($scope.selfMarker.coords == null){
+            $scope.selfMarker.coords = {latitude: position.coords.latitude, 
+                                        longitude: position.coords.longitude};
+        }
         $scope.map = {  center:{latitude: position.coords.latitude, 
                                 longitude: position.coords.longitude}, 
                         zoom: 14,
@@ -114,17 +124,19 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
                 $http.get(geourl).success((function(dish) {
                     return function(data) {
                         var results = data.results;
-                        $scope.listMarkers.push({  
-                            title: dish.Name, 
-                            id: dish.DishId,
-                            price: dish.Price,
-                            nbpart: dish.NbPart,
-                            events: {click: clickMarker},
-                            coords: {
-                                longitude: parseFloat(results[0].geometry.location.lng),
-                                latitude: parseFloat(results[0].geometry.location.lat),
-                            }
-                        });
+                        if (results.length >= 1){
+                            $scope.listMarkers.push({  
+                                title: dish.Name, 
+                                id: dish.DishId,
+                                price: dish.Price,
+                                nbpart: dish.NbPart,
+                                events: {click: clickMarker},
+                                coords: {
+                                    longitude: parseFloat(results[0].geometry.location.lng),
+                                    latitude: parseFloat(results[0].geometry.location.lat),
+                                }
+                            });
+                        }
                     };
                 })(dish));
             }

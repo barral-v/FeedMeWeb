@@ -13,6 +13,11 @@
                             <a class="btn btn-success" href="#/createdish" role="button">Créez une offre</a>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-offset-10">
+                            <a class="btn btn-info" href="" ng-click="getLocation()" role="button">Center the map</a>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="text-center">
@@ -30,6 +35,7 @@
                                         <p><a href="/#/detaildish/{{selectedDish.DishId}}">Voir les details</a></p>
                                     </div>
                                 </ui-gmap-window>
+                                <ui-gmap-marker idKey='0' options='selfMarker.options' coords='selfMarker.coords'></ui-gmap-marker>
                                 <ui-gmap-markers models="listMarkers" click="'onClick'" coords="'coords'" icon="'icon'" options="'options'">
                                 </ui-gmap-markers>
                             </ui-gmap-google-map>
