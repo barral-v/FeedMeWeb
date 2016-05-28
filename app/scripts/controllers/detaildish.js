@@ -42,13 +42,13 @@
 
     	var dish = response.data;
     	$scope.dish = dish;
-	    $scope.monday = dish.Days.charAt(0) == "1" ? true : false;
-	    $scope.tuesday = dish.Days.charAt(1) == "1" ? true : false;
-	    $scope.wednesday = dish.Days.charAt(2) == "1" ? true : false;
-	    $scope.thursday = dish.Days.charAt(3) == "1" ? true : false;
-	    $scope.friday = dish.Days.charAt(4) == "1" ? true : false;
-	    $scope.saturday = dish.Days.charAt(5) == "1" ? true : false;
-	    $scope.sunday = dish.Days.charAt(6) == "1" ? true : false;
+	    $scope.monday = dish.Days.charAt(0) === "1" ? true : false;
+	    $scope.tuesday = dish.Days.charAt(1) === "1" ? true : false;
+	    $scope.wednesday = dish.Days.charAt(2) === "1" ? true : false;
+	    $scope.thursday = dish.Days.charAt(3) === "1" ? true : false;
+	    $scope.friday = dish.Days.charAt(4) === "1" ? true : false;
+	    $scope.saturday = dish.Days.charAt(5) === "1" ? true : false;
+	    $scope.sunday = dish.Days.charAt(6) === "1" ? true : false;
 	    $scope.dateOptions.maxDate = $scope.dish.DateExpiration;
 
     });

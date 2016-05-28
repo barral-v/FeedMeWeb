@@ -84,12 +84,16 @@ angular
     });
   }).value('userConnected', false).controller('HeaderCtrl', ['$rootScope', '$cookies', '$scope', function ($rootScope, $cookies, $scope) {
 
+    if ($cookies.get("feedmetoken")){ 
+        $rootScope.userConnected = true;
+    }
+
     $scope.logout = function(){
         if ($cookies.get("feedmetoken")){ 
             $cookies.remove("feedmetoken");
             $rootScope.userConnected = false;
         }
-    }
+    };
 
 
   }]);

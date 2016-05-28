@@ -33,7 +33,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
         options: {
             icon: "https://maps.google.com/mapfiles/kml/shapes/schools_maps.png"
         }
-    }
+    };
 
 
     var clickMarker = function(gmarker_instance, event_name, marker){  
@@ -52,7 +52,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
     $scope.showPosition = function (position) {
         $scope.lat = position.coords.latitude;
         $scope.lng = position.coords.longitude;
-        if ($scope.selfMarker.coords == null){
+        if ($scope.selfMarker.coords === null){
             $scope.selfMarker.coords = {latitude: position.coords.latitude, 
                                         longitude: position.coords.longitude};
         }
