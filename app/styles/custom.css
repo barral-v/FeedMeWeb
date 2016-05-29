@@ -6,6 +6,10 @@
     color: #A94442;
 }
 
+.white-space-pre-line {
+    white-space: pre-line;
+}
+
 .red-border{
     border: 2px solid #A94442;
 }

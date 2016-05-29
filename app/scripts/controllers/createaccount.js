@@ -13,7 +13,10 @@
     // function to submit the form after all validation has occurred            
     $scope.submitCreateAccount = function(isValid) {
       // check to make sure the form is completely valid
-      if (isValid && ($scope.user.Password === $scope.user.ConfirmPassword)) {
+      if ($scope.user.Password !== $scope.user.ConfirmPassword){
+        $scope.errorMessage = "The password and confirmation password do not match.";
+      }
+      else if (isValid) {
         var user = $scope.user;
         var url = 'http://163.5.84.232/WebService/api/Account/Register';
 
@@ -30,9 +33,22 @@
           $location.path('/').replace();
           response = response;
         }, function errorCallback(response) {
-          console.log(response);
-          if (response.statusText === "Not Found"){
-            $scope.requestError = "Veuillez vérifier votre identifiant et votre mot de passe";                
+          var message = response.data.Message;
+          if (message !== "The request is invalid."){
+            $scope.errorMessage = message;
+          }
+          else{
+            var modelState = response.data.ModelState;
+            var error_list = "";
+            for (var key in modelState) {
+              if (modelState.hasOwnProperty(key)) {
+                for (var i = modelState[key].length - 1; i >= 0; i--) {
+                    error_list += modelState[key][i];
+                    error_list += "\n";
+                }
+              }
+            }
+            $scope.errorMessage = error_list;
           }
         });
       }
