@@ -6,7 +6,6 @@
 
                 <!-- page content -->
                 <div class="container">
-                    <form name="dishForm" ng-submit="submitCreateDish(dishForm.$valid)" novalidate>
                         <!-- button -->
 
                         <div class="row">
@@ -17,6 +16,8 @@
 
                         <div class="row" style="margin-top: 15px;">
                             <div class="col-sm-12">
+
+                            <form id="dishForm" name="dishForm" ng-submit="submitCreateDish(dishForm.$valid)" novalidate>
 
                                 <div class="form-group col-sm-12">
                                     <div class="form-group col-sm-3">

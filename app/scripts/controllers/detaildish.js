@@ -91,8 +91,7 @@
 			    	var data = {DishId: $scope.dish.DishId,
 			    		NbPart: $scope.nbPart,
 			    		TotalPrice: $scope.nbPart * $scope.dish.Price,
-			    		DateExpiration: $scope.DateExpiration,
-			    		PickUpTime: $scope.dish.DateExpiration,
+			    		PickUpTime: $scope.DateExpiration,
 			    		Statut: "In progress"};
 
 			    		$http({
