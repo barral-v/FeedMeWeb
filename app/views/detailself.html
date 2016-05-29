@@ -19,62 +19,57 @@
                 	
                     <!-- top of form -->
                     <div class="form-top">
-                		<div class="form-top-left">
+                		<div class="form-top-left"">
                 			<h3>Manage your account</h3>
                 		</div>
                     </div>
-                     <!-- FORM -->
-                    <div class="form-bottom">
-	                    <form name="updateForm" ng-submit="submitChangePassword(updateForm.$valid)" novalidate>
 
-                            
-                            <!-- FIRSTNAME -->
-                            <div class="form-group">
-                                <input type="text" name="firstname" placeholder="First name" disabled class="form-control" ng-model="user.Firstname">
+                    <!-- FIRSTNAME -->
+                            <div class="form-left" id="top-form">
+                                <p>First name : {{ user.Firstname }}</p>
                             </div>
 
                             <!-- LASTNAME -->
-                            <div class="form-group">
-                                <input type="text" name="lastname" placeholder="Last name" disabled class="form-control" ng-model="user.Lastname">
+                            <div class="form-left">
+                                <p>Last name : {{ user.Lastname }}</p>
                             </div>
 
                             <!-- USERNAME -->
-	                    	<div class="form-group" ng-class="{ 'has-error' : updateForm.username.$invalid && updateForm.username.$touched }">
-	                        	<input type="text" name="username" placeholder="Username" disabled class="form-control" ng-model="user.UserName" required>
-                                <div ng-messages="updateForm.username.$error" ng-show="updateForm.username.$touched">
-                                    <p class="help-block" ng-message="required">Please enter an username.</p>
-                                </div>
-	                        </div>
+                            <div class="form-left">
+                                <p>User name : {{ user.UserName }}</p>
+                            </div>
 
                             <!-- PHONE -->
-                            <div class="form-group">
-                                <input type="text" name="phone" placeholder="Phone number" disabled class="form-control" ng-model="user.PhoneNumber">
-                            </div>
-
-                            <!-- Road -->
-                            <div class="form-group">
-                                <input type="text" name="road" placeholder="Address" disabled class="form-control" ng-model="user.Address.Road">
-                            </div>
-
-                            <!-- ZIP CODE -->
-                            <div class="form-group">
-                                <input type="text" name="postalcode" placeholder="Postal code" disabled class="form-control" ng-model="user.Address.PostalCode">
-                            </div>
-
-                            <!-- COUNTRY -->
-                            <div class="form-group">
-                                <input type="text" name="country" placeholder="Country" class="form-control" disabled ng-model="user.Address.Country">
+                            <div class="form-left">
+                                <p>Phone number : {{ user.PhoneNumber }}</p>
                             </div>
 
                             <!-- EMAIL -->
-                            <div class="form-group" ng-class="{ 'has-error' : updateForm.email.$invalid  && updateForm.email.$touched }">
-                                <input type="text" name="email" placeholder="Email" disabled class="form-control" ng-model="user.Email" required>
-                                <div ng-messages="updateForm.email.$error" ng-show="updateForm.email.$touched">
-                                    <p class="help-block" ng-message="invalid">Please enter a valid email.</p>
-                                    <p class="help-block" ng-message="required">Please enter an email address.</p>
-                                </div>
+                            <div class="form-left">
+                                <p>Email : {{ user.Email }}</p>
                             </div>
 
+                            <!-- Road -->
+                            <div class="form-left" id="address">
+                                <h4>Address</h4>
+                                
+                                <p>Road : {{ user.Address.Road }}</p>
+                           
+                            <!-- ZIP CODE -->
+                                <p>Postal Code : {{ user.Address.PostalCode }}</p>
+                          
+
+                            <!-- COUNTRY -->
+                                <p>Country : {{ user.Address.Country }}</p>
+                            </div>
+
+                            <div class="form-left" id="sentence">
+                                <p>Change your password :</p>
+                            </div>
+
+                     <!-- FORM -->
+                    <div class="form-bottom">
+	                    <form name="updateForm" ng-submit="submitChangePassword(updateForm.$valid)" novalidate>
 
                             <!-- OLD PASSWORD -->
 	                        <div class="form-group" ng-class="{ 'has-error' : updateForm.password.$invalid && updateForm.password.$touched }">
