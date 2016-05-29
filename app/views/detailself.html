@@ -20,7 +20,7 @@
                     <!-- top of form -->
                     <div class="form-top">
                 		<div class="form-top-left">
-                			<h3>Gérez votre compte</h3>
+                			<h3>Manage your account</h3>
                 		</div>
                     </div>
                      <!-- FORM -->
@@ -30,81 +30,81 @@
                             
                             <!-- FIRSTNAME -->
                             <div class="form-group">
-                                <input type="text" name="firstname" placeholder="Prénom..." disabled class="form-control" ng-model="user.Firstname">
+                                <input type="text" name="firstname" placeholder="First name" disabled class="form-control" ng-model="user.Firstname">
                             </div>
 
                             <!-- LASTNAME -->
                             <div class="form-group">
-                                <input type="text" name="lastname" placeholder="Nom..." disabled class="form-control" ng-model="user.Lastname">
+                                <input type="text" name="lastname" placeholder="Last name" disabled class="form-control" ng-model="user.Lastname">
                             </div>
 
                             <!-- USERNAME -->
 	                    	<div class="form-group" ng-class="{ 'has-error' : updateForm.username.$invalid && updateForm.username.$touched }">
-	                        	<input type="text" name="username" placeholder="Nom d'utilisateur..." disabled class="form-control" ng-model="user.UserName" required>
+	                        	<input type="text" name="username" placeholder="Username" disabled class="form-control" ng-model="user.UserName" required>
                                 <div ng-messages="updateForm.username.$error" ng-show="updateForm.username.$touched">
-                                    <p class="help-block" ng-message="required">Veuillez entrer un nom d'utilisateur</p>
+                                    <p class="help-block" ng-message="required">Please enter an username.</p>
                                 </div>
 	                        </div>
 
                             <!-- PHONE -->
                             <div class="form-group">
-                                <input type="text" name="phone" placeholder="Telephone..." disabled class="form-control" ng-model="user.PhoneNumber">
+                                <input type="text" name="phone" placeholder="Phone number" disabled class="form-control" ng-model="user.PhoneNumber">
                             </div>
 
                             <!-- Road -->
                             <div class="form-group">
-                                <input type="text" name="road" placeholder="Addresse..." disabled class="form-control" ng-model="user.Address.Road">
+                                <input type="text" name="road" placeholder="Address" disabled class="form-control" ng-model="user.Address.Road">
                             </div>
 
                             <!-- ZIP CODE -->
                             <div class="form-group">
-                                <input type="text" name="postalcode" placeholder="Code Postal..." disabled class="form-control" ng-model="user.Address.PostalCode">
+                                <input type="text" name="postalcode" placeholder="Postal code" disabled class="form-control" ng-model="user.Address.PostalCode">
                             </div>
 
                             <!-- COUNTRY -->
                             <div class="form-group">
-                                <input type="text" name="country" placeholder="Pays..." class="form-control" disabled ng-model="user.Address.Country">
+                                <input type="text" name="country" placeholder="Country" class="form-control" disabled ng-model="user.Address.Country">
                             </div>
 
                             <!-- EMAIL -->
                             <div class="form-group" ng-class="{ 'has-error' : updateForm.email.$invalid  && updateForm.email.$touched }">
-                                <input type="text" name="email" placeholder="Email..." disabled class="form-control" ng-model="user.Email" required>
+                                <input type="text" name="email" placeholder="Email" disabled class="form-control" ng-model="user.Email" required>
                                 <div ng-messages="updateForm.email.$error" ng-show="updateForm.email.$touched">
-                                    <p class="help-block" ng-message="invalid">Veuillez entrer un email valide</p>
-                                    <p class="help-block" ng-message="required">Veuillez entrer un email</p>
+                                    <p class="help-block" ng-message="invalid">Please enter a valid email.</p>
+                                    <p class="help-block" ng-message="required">Please enter an email address.</p>
                                 </div>
                             </div>
 
 
                             <!-- OLD PASSWORD -->
 	                        <div class="form-group" ng-class="{ 'has-error' : updateForm.password.$invalid && updateForm.password.$touched }">
-	                        	<input type="password" name="oldpassword" placeholder="Ancien Mot de Passe..." class="form-control" ng-model="user.OldPassword" id="form-password" ng-minlength="5" required>
+	                        	<input type="password" name="oldpassword" placeholder="Old password" class="form-control" ng-model="user.OldPassword" id="form-password" ng-minlength="5" required>
                                 <div ng-messages="updateForm.password.$error" ng-show="updateForm.password.$touched">
-                                    <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 charactères</p>
-                                    <p class="help-block" ng-message="required">Veuillez entrer votre ancien mot de passe</p>
+                                    <p class="help-block" ng-message="minlength">Your password must be at least 5 characters long.</p>
+                                    <p class="help-block" ng-message="required">Please enter your old password.</p>
                                 </div>
 	                        </div>
 
                             <!-- PASSWORD -->
 	                        <div class="form-group" ng-class="{ 'has-error' : updateForm.password.$invalid && updateForm.password.$touched }">
-	                        	<input type="password" name="password" placeholder="Mot de Passe..." class="form-control" ng-model="user.Password" id="form-password" ng-minlength="5" required>
+	                        	<input type="password" name="password" placeholder="New password" class="form-control" ng-model="user.Password" id="form-password" ng-minlength="5" required>
                                 <div ng-messages="updateForm.password.$error" ng-show="updateForm.password.$touched">
-                                    <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 charactères</p>
-                                    <p class="help-block" ng-message="required">Veuillez définir un mot de passe</p>
+                                    <p class="help-block" ng-message="minlength">Your password must be at least 5 characters long.</p>
+                                    <p class="help-block" ng-message="required">Please enter your new password.</p>
                                 </div>
 	                        </div>
 
                             <!-- VALID PASSWORD -->
                             <div class="form-group" ng-class="{ 'has-error' : updateForm.passwordvalidator.$invalid && updateForm.passwordvalidator.$touched }">
-                                <input type="password" name="passwordvalidator" placeholder="Confirmez votre mot de Passe..." class="form-control" ng-model="user.ConfirmPassword" id="form-passwordvalidator" ng-minlength="5" required>
+                                <input type="password" name="passwordvalidator" placeholder="Confirm password" class="form-control" ng-model="user.ConfirmPassword" id="form-passwordvalidator" ng-minlength="5" required>
                                 <div ng-messages="updateForm.passwordvalidator.$error" ng-show="updateForm.passwordvalidator.$touched">
-                                    <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 charactères</p>
-                                    <p class="help-block" ng-message="required">Veuillez définir un mot de passe</p>
+                                    <p class="help-block" ng-message="minlength">Your password must be at least 5 characters long.</p>
+                                    <p class="help-block" ng-message="required">Please confirm your new password.</p>
                                 </div>
                             </div>
 
                             <!-- VALIDATION -->
-	                        <button type="submit" class="btn" >Valider</button>
+	                        <button type="submit" class="btn" >Submit</button>
 	                    
 
                         </form>
