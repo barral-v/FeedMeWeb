@@ -64,11 +64,6 @@ angular
         controller: 'DetailselfCtrl',
         controllerAs: 'detailself'
       })
-      .when('/detailuser/:userId', {
-        templateUrl: 'views/detailuser.html',
-        controller: 'DetailuserCtrl',
-        controllerAs: 'detailuser'
-      })
       .when('/history', {
         templateUrl: 'views/history.html',
         controller: 'HistoryCtrl',

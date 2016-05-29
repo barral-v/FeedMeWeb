@@ -24,7 +24,7 @@
                                         <p>Choose an image for your dish</p>
                                     </div>
                                     <div class="form-group col-sm-9">
-                                        <input type="file" name="file">
+                                        <input type="file" name="files" onchange="angular.element(this).scope().uploadFile(this.files)" value="" multiple="multiple">
                                     </div>
                                 </div>
 

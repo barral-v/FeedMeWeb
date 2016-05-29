@@ -30,21 +30,6 @@
 
         $scope.alerts = [];
 
-        $scope.showDishPosition = function (position) {
-            $scope.lat = position.coords.latitude;
-            $scope.lng = position.coords.longitude;
-            $scope.$apply();
-        };
-
-        $scope.getDishLocation = function () {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition($scope.showDishPosition, $scope.showError);
-            }
-            else {
-                $scope.error = "La géolocalisation n'est pas supportée par votre navigateur.";
-            }
-        };
-
         $scope.daysError = true;
         
         $scope.dish = {
@@ -71,6 +56,14 @@
                 startingDay: 1
             };
 
+        var fd = new FormData();
+
+            //  onchange="angular.element(this).scope().uploadFile(this.files)"
+        $scope.uploadFile = function(files) {
+            //Take the first selected file
+            fd.append("file", files[0]);
+        };
+
         // function to submit the form after all validation has occurred            
         $scope.submitCreateDish = function(isValid) {
 
@@ -82,11 +75,6 @@
                 }
                 else{
                     var dish = $scope.dish;
-
-                    $scope.getDishLocation();
-
-                    dish.Address.Latitude = $scope.lat;
-                    dish.Address.Longitude = $scope.lng;
                     dish.Days = getDaysString();
 
                     var url = 'http://163.5.84.232/WebService/api/Dishes';
@@ -102,9 +90,26 @@
                     };
 
                     $http(request).then(function successCallback(response) {
-                        response = response;
+                        var dish = response.data;
+
+                        var url2 = "http://163.5.84.232/WebService/api/Dishes/Images?id=" + dish.DishId;
+
+                        var request2 = {
+                          method: 'POST',
+                          url: url2,
+                          data: fd,
+                          headers: {
+                            'Content-Type': undefined,
+                            'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+                            },
+                          transformRequest: angular.identity
+                        };                        
+
+                        $http(request2).then(function successCallback(response) {
+
                         $scope.alerts.push({ type: 'success', msg: 'Your dish has been created' });
                         $timeout(function() { $location.path('/map').replace(); }, 5000);
+                    });
                     }, function errorCallback(response) {
                         var message = response.data.Message;
                         if (message !== "The request is invalid."){
