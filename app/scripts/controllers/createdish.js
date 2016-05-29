@@ -9,7 +9,7 @@
  */
  var app = angular.module('feedMeWebApp');
  
- app.controller('CreatedishCtrl', ['$location', '$cookies', '$http', '$scope', function ($location, $cookies, $http, $scope) {
+ app.controller('CreatedishCtrl', ['$timeout', '$location', '$cookies', '$http', '$scope', function ($timeout, $location, $cookies, $http, $scope) {
 
     function getDaysString(){
         var s = "";
@@ -27,6 +27,8 @@
         $location.path('/').replace(); 
     }
     else {
+
+        $scope.alerts = [];
 
         $scope.showDishPosition = function (position) {
             $scope.lat = position.coords.latitude;
@@ -101,7 +103,8 @@
 
                     $http(request).then(function successCallback(response) {
                         response = response;
-                        $location.path('/map').replace();
+                        $scope.alerts.push({ type: 'success', msg: 'Your dish has been created' });
+                        $timeout(function() { $location.path('/map').replace(); }, 5000);
                     }, function errorCallback(response) {
                         var message = response.data.Message;
                         if (message !== "The request is invalid."){

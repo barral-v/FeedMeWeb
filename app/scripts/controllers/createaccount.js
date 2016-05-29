@@ -9,8 +9,9 @@
  */
  var app = angular.module('feedMeWebApp');
  
- app.controller('CreateaccountCtrl', ['$cookies', '$scope', '$location', '$http', function ($cookies, $scope, $location, $http) {
+ app.controller('CreateaccountCtrl', ['$timeout', '$scope', '$location', '$http', function ($timeout, $scope, $location, $http) {
     // function to submit the form after all validation has occurred            
+    $scope.alerts = [];
     $scope.submitCreateAccount = function(isValid) {
       // check to make sure the form is completely valid
       if ($scope.user.Password !== $scope.user.ConfirmPassword){
@@ -30,8 +31,9 @@
         };
 
         $http(request).then(function successCallback(response) {
-          $location.path('/').replace();
           response = response;
+          $scope.alerts.push({ type: 'success', msg: 'Your account has been created' });
+          $timeout(function() { $location.path('/').replace(); }, 5000);
         }, function errorCallback(response) {
           var message = response.data.Message;
           if (message !== "The request is invalid."){
