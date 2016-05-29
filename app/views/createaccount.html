@@ -21,7 +21,7 @@
                             <!-- top of form -->
                             <div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>Créez un compte</h3>
+                        			<h3>Create an account</h3>
                         		</div>
                             </div>
 
@@ -33,75 +33,75 @@
                                     
                                     <!-- FIRSTNAME -->
                                     <div class="form-group" ng-class="{ 'has-error' : createForm.firstname.$invalid && createForm.firstname.$touched }">
-                                        <input type="text" name="firstname" placeholder="Prénom..." class="form-control" ng-model="user.Firstname" required>
+                                        <input type="text" name="firstname" placeholder="First name" class="form-control" ng-model="user.Firstname" required>
                                         <div ng-messages="createForm.firstname.$error" ng-show="createForm.firstname.$touched">
-                                            <p class="help-block" ng-message="required">Please enter your first name</p>
+                                            <p class="help-block" ng-message="required">Please enter your first name.</p>
                                         </div>
                                     </div>
 
                                     <!-- LASTNAME -->
                                     <div class="form-group" ng-class="{ 'has-error' : createForm.lastname.$invalid && createForm.lastname.$touched }">
-                                        <input type="text" name="lastname" placeholder="Nom..." class="form-control" ng-model="user.Lastname" required>
+                                        <input type="text" name="lastname" placeholder="Last name" class="form-control" ng-model="user.Lastname" required>
                                         <div ng-messages="createForm.lastname.$error" ng-show="createForm.lastname.$touched">
-                                            <p class="help-block" ng-message="required">Please enter your last name</p>
+                                            <p class="help-block" ng-message="required">Please enter your last name.</p>
                                         </div>
                                     </div>
 
                                     <!-- USERNAME -->
 			                    	<div class="form-group" ng-class="{ 'has-error' : createForm.username.$invalid && createForm.username.$touched }">
-			                        	<input type="text" name="username" placeholder="Nom d'utilisateur..." class="form-control" ng-model="user.Username" required>
+			                        	<input type="text" name="username" placeholder="Username" class="form-control" ng-model="user.Username" required>
                                         <div ng-messages="createForm.username.$error" ng-show="createForm.username.$touched">
-                                            <p class="help-block" ng-message="required">Veuillez entrer un nom d'utilisateur</p>
+                                            <p class="help-block" ng-message="required">Please enter an username.</p>
                                         </div>
 			                        </div>
 
                                     <!-- PHONE -->
                                     <div class="form-group"  ng-class="{ 'has-error' : createForm.phone.$invalid && createForm.phone.$touched }">
-                                        <input type="text" name="phone" placeholder="Telephone..." class="form-control" ng-model="user.PhoneNumber" required>
+                                        <input type="text" name="phone" placeholder="Phone number" class="form-control" ng-model="user.PhoneNumber" required>
                                         <div ng-messages="createForm.phone.$error" ng-show="createForm.phone.$touched">
-                                            <p class="help-block" ng-message="required">Please enter your phone number</p>
+                                            <p class="help-block" ng-message="required">Please enter your phone number.</p>
                                         </div>
                                     </div>
 
                                     <!-- Road -->
                                     <div class="form-group">
-                                        <input type="text" name="road" placeholder="Addresse..." class="form-control" ng-model="user.Address.Road">
+                                        <input type="text" name="road" placeholder="Address" class="form-control" ng-model="user.Address.Road">
                                     </div>
 
                                     <!-- ZIP CODE -->
                                     <div class="form-group">
-                                        <input type="text" name="postalcode" placeholder="Code Postal..." class="form-control" ng-model="user.Address.PostalCode">
+                                        <input type="text" name="postalcode" placeholder="Postal code" class="form-control" ng-model="user.Address.PostalCode">
                                     </div>
 
                                     <!-- COUNTRY -->
                                     <div class="form-group">
-                                        <input type="text" name="country" placeholder="Pays..." class="form-control" ng-model="user.Address.Country">
+                                        <input type="text" name="country" placeholder="Country" class="form-control" ng-model="user.Address.Country">
                                     </div>
 
                                     <!-- EMAIL -->
                                     <div class="form-group" ng-class="{ 'has-error' : createForm.email.$invalid  && createForm.email.$touched }">
-                                        <input type="text" name="email" placeholder="Email..." class="form-control" ng-model="user.Email" required>
+                                        <input type="text" name="email" placeholder="E-mail" class="form-control" ng-model="user.Email" required>
                                         <div ng-messages="createForm.email.$error" ng-show="createForm.email.$touched">
-                                            <p class="help-block" ng-message="invalid">Veuillez entrer un email valide</p>
-                                            <p class="help-block" ng-message="required">Veuillez entrer un email</p>
+                                            <p class="help-block" ng-message="invalid">Please enter a valid email.</p>
+                                            <p class="help-block" ng-message="required">Please enter an email address.</p>
                                         </div>
                                     </div>
 
                                     <!-- PASSWORD -->
 			                        <div class="form-group" ng-class="{ 'has-error' : createForm.password.$invalid && createForm.password.$touched }">
-			                        	<input type="password" name="password" placeholder="Mot de Passe..." class="form-control" ng-model="user.Password" id="form-password" ng-minlength="5" required>
+			                        	<input type="password" name="password" placeholder="Password" class="form-control" ng-model="user.Password" id="form-password" ng-minlength="5" required>
                                         <div ng-messages="createForm.password.$error" ng-show="createForm.password.$touched">
-                                            <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 caractères</p>
-                                            <p class="help-block" ng-message="required">Veuillez définir un mot de passe</p>
+                                            <p class="help-block" ng-message="minlength">Your password must be at least 5 characters long.</p>
+                                            <p class="help-block" ng-message="required">Please enter a password.</p>
                                         </div>
 			                        </div>
 
                                     <!-- VALID PASSWORD -->
                                     <div class="form-group" ng-class="{ 'has-error' : createForm.passwordvalidator.$invalid && createForm.passwordvalidator.$touched }">
-                                        <input type="password" name="passwordvalidator" placeholder="Confirmez votre mot de Passe..." class="form-control" ng-model="user.ConfirmPassword" id="form-passwordvalidator" ng-minlength="5" required>
+                                        <input type="password" name="passwordvalidator" placeholder="Confirm password" class="form-control" ng-model="user.ConfirmPassword" id="form-passwordvalidator" ng-minlength="5" required>
                                         <div ng-messages="createForm.passwordvalidator.$error" ng-show="createForm.passwordvalidator.$touched">
-                                            <p class="help-block" ng-message="minlength">Votre mot de passe doit faire au moins 5 caractères</p>
-                                            <p class="help-block" ng-message="required">Veuillez réécrire votre mot de passe</p>
+                                            <p class="help-block" ng-message="minlength">Your password must be at least 5 characters long.</p>
+                                            <p class="help-block" ng-message="required">Please re-enter your password.</p>
                                         </div>
                                     </div>
 
@@ -110,7 +110,7 @@
                                     </div>
 
                                     <!-- VALIDATION -->
-			                        <button type="submit" class="btn" >Valider</button>
+			                        <button type="submit" class="btn" >Submit</button>
 			                    
 
                                 </form>
@@ -125,7 +125,7 @@
 	                        		<i class="fa fa-twitter"></i> Twitter
 	                        	</a> -->
                                 <a class="btn btn-link-2" href="#/">
-                                    Se connecter
+                                    Sign in
                                 </a>
 	                        	<!-- <a class="btn btn-link-2" href="#">
 	                        		<i class="fa fa-google-plus"></i>Utilisez Google Plus
