@@ -111,6 +111,10 @@
                                 <p class="help-block red white-space-pre-line">{{errorMessage}}</p>
                             </div>
 
+                            <div class="row">
+                                <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</uib-alert>
+                            </div>
+
 
                             <!-- VALIDATION -->
                             <div class="row">
