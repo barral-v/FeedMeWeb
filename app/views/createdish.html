@@ -137,6 +137,10 @@
                                     <uib-timepicker class="col-sm-3" name="endTime" ng-model="dish.PickUpEndTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
                                 </div>
 
+                                <div class="col-sm-12" ng-show="errorMessage">
+                                    <p class="help-block red white-space-pre-line">{{errorMessage}}</p>
+                                </div>
+
                                 <!-- VALIDATION -->
                                 <div class="col-sm-12">
                                     <button  type="submit" class="btn" >Valider</button>

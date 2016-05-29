@@ -34,7 +34,8 @@
                                     <span class="dish-description">{{dish.SizePart}} grammes par parts</span>
                                 </div>
                             </div>
-                                <div class="row">
+                                <div class="row" style="margin-top:20px;">
+                                    <div class="row">Available</div>
                                     <div class="col-sm-offset-3 col-sm-1">
                                         <input type="checkbox" class="form-control" ng-model="monday" disabled>
                                         <span>Monday</span>
@@ -73,6 +74,21 @@
                         <form name="dishForm" ng-submit="submitForm(dishForm.$valid)" novalidate>
                             <!-- button -->
                             <div class="row">
+                                <!-- NB PART -->
+                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.nbPart.$invalid && dishForm.nbPart.$touched }">
+                                    <input type="number" name="nbPart" placeholder="Nb de parts souhaitées" class="form-control" ng-model="nbPart" ng-change="nbPartChange()" max="{{dish.NbPart}}" required>
+                                    <div ng-messages="dishForm.nbPart.$error" ng-show="dishForm.nbPart.$touched">
+                                        <p class="help-block" ng-message="required">Choissisez un nombre de parts</p>
+                                        <p class="help-block" ng-message="max">You can't order more than {{dish.NbPart}}</p>
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6" style="text-align: left;">
+                                    <span>Total: {{priceTotal}} €</span>
+                                </div>
+                            </div> 
+
+                            <div class="row">
                                 <!-- DATE -->
                                 <div class="form-group" ng-class="{ 'has-error' : dishForm.validateDate.$invalid && dishForm.validateDate.$touched }">
                                     <div class="col-sm-6">Choisissez la date à laquelle vous récupèrerez votre plat:</div>
@@ -93,20 +109,17 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <!-- NB PART -->
-                                <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.nbPart.$invalid && dishForm.nbPart.$touched }">
-                                    <input type="number" name="nbPart" placeholder="Nb de parts souhaitées" class="form-control" ng-model="nbPart" required>
-                                    <div ng-messages="dishForm.nbPart.$error" ng-show="dishForm.nbPart.$touched">
-                                        <p class="help-block" ng-message="required">Choissisez un nombre de parts</p>
-                                    </div>
-                                </div>
+                               
+                            <div class="col-sm-12" ng-show="errorMessage">
+                                <p class="help-block red white-space-pre-line">{{errorMessage}}</p>
+                            </div>
 
-                                <!-- VALIDATION -->
-                                <div class="col-sm-6">
-                                    <button type="submit" class="btn" >Valider</button>
-                                </div>
-                            </div>            
+
+                            <!-- VALIDATION -->
+                            <div class="row">
+                                <button type="submit" class="btn" >Valider</button>
+                            </div>        
+
                         </form>  
                     </div>
                 </div>

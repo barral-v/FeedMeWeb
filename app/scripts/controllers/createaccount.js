@@ -41,12 +41,12 @@
             var modelState = response.data.ModelState;
             var error_list = "";
             for (var key in modelState) {
-              if (modelState.hasOwnProperty(key)) {
-                for (var i = modelState[key].length - 1; i >= 0; i--) {
-                    error_list += modelState[key][i];
-                    error_list += "\n";
+                if (modelState.hasOwnProperty(key)) {
+                    for (var i = modelState[key].length - 1; i >= 0; i--) {
+                        error_list += modelState[key][i];
+                        error_list += "\n";
+                    }
                 }
-              }
             }
             $scope.errorMessage = error_list;
           }
