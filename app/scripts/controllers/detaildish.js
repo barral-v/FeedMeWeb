@@ -9,8 +9,9 @@
  */
  var app = angular.module('feedMeWebApp');
  
- app.controller('DetaildishCtrl', ['$cookies', '$scope', '$routeParams', '$http', '$location', function ($cookies, $scope, $routeParams, $http, $location) {
+ app.controller('DetaildishCtrl', ['$timeout', '$cookies', '$scope', '$routeParams', '$http', '$location', function ($timeout, $cookies, $scope, $routeParams, $http, $location) {
 
+ 	$scope.alerts = [];
  	if (!$cookies.get("feedmetoken")){ 
  		$location.path('/').replace(); 
  	}
@@ -91,8 +92,7 @@
 			    	var data = {DishId: $scope.dish.DishId,
 			    		NbPart: $scope.nbPart,
 			    		TotalPrice: $scope.nbPart * $scope.dish.Price,
-			    		DateExpiration: $scope.DateExpiration,
-			    		PickUpTime: $scope.dish.DateExpiration,
+			    		PickUpTime: $scope.DateExpiration,
 			    		Statut: "In progress"};
 
 			    		$http({
@@ -105,7 +105,8 @@
 			    			},
 			    		}).then(function successCallback(response) {
 			    			response = response;
-			    			$location.path('/map').replace();
+			    			$scope.alerts.push({ type: 'success', msg: 'Your order has been submitted, it is pending validation' });
+				            $timeout(function() { $location.path('/map').replace(); }, 5000);
 			    		}, function errorCallback(response) {
 				            var message = response.data.Message;
 				            if (message !== "The request is invalid."){

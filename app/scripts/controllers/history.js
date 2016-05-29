@@ -8,7 +8,9 @@
  * Controller of the feedMeWebApp
  */
  angular.module('feedMeWebApp')
- .controller('HistoryCtrl', ['$route', '$cookies', '$scope', '$location', '$http', function  ($route, $cookies, $scope, $location, $http) {
+ .controller('HistoryCtrl', ['$timeout', '$route', '$cookies', '$scope', '$location', '$http', function  ($timeout, $route, $cookies, $scope, $location, $http) {
+
+    $scope.alerts = [];
 
     if (!$cookies.get("feedmetoken")){ 
         $location.path('/').replace(); 
@@ -75,7 +77,8 @@
 
             $http(request).then(function successCallback(response) {
                 response = response;
-                $route.reload();
+                $scope.alerts.push({ type: 'success', msg: 'You have canceled this order' });
+                $timeout(function() { $route.reload(); }, 2500);
             }, function errorCallback(response) {
               var message = response.data.Message;
               if (message !== "The request is invalid."){
@@ -111,7 +114,8 @@
 
             $http(request).then(function successCallback(response) {
                 response = response;
-                $route.reload();
+                $scope.alerts.push({ type: 'success', msg: 'You have accepted this order' });
+                $timeout(function() { $route.reload(); }, 2500);
             }, function errorCallback(response) {
               var message = response.data.Message;
               if (message !== "The request is invalid."){
@@ -147,7 +151,8 @@
 
             $http(request).then(function successCallback(response) {
                 response = response;
-                $route.reload();
+                $scope.alerts.push({ type: 'success', msg: 'You have refused this order' });
+                $timeout(function() { $route.reload(); }, 2500);$route.reload();
             }, function errorCallback(response) {
               var message = response.data.Message;
               if (message !== "The request is invalid."){
@@ -183,7 +188,8 @@
 
             $http(request).then(function successCallback(response) {
                 response = response;
-                $route.reload();
+                $scope.alerts.push({ type: 'success', msg: 'You have completed this order' });
+                $timeout(function() { $route.reload(); }, 2500);$route.reload();
             }, function errorCallback(response) {
               var message = response.data.Message;
               if (message !== "The request is invalid."){

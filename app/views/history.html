@@ -37,6 +37,10 @@
 	<div class="col-sm-12" ng-show="errorMessage">
         <p class="help-block red white-space-pre-line">{{errorMessage}}</p>
     </div>
+
+    <div class="col-sm-12">
+        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}">{{alert.msg}}</uib-alert>
+    </div>
 	
 	<div class="col-sm-12">
 		<h3>Sell listings</h3>

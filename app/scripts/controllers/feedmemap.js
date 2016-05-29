@@ -16,7 +16,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
         $location.path('/').replace(); 
     } 
 
-    var url = 'http://163.5.84.232/WebService/api/Dishes';
+    var url = 'http://163.5.84.232/WebService/api/Dishes?page=map';
 
     $scope.lat = "0";
     $scope.lng = "0";
