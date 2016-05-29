@@ -21,8 +21,8 @@
                             <!-- top of form -->
                             <div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>Connexion</h3>
-                            		<p>Entrez votre nom d'utilisateur et votre mot de passe:</p>
+                        			<h3>Sign in</h3>
+                            		<p>Please nter your email and password:</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-lock"></i>
@@ -37,17 +37,17 @@
                                     
                                     <!-- USERNAME -->
 			                    	<div class="form-group" ng-class="{ 'has-error' : loginForm.username.$invalid && loginForm.username.$touched }">
-			                        	<input type="text" name="username" placeholder="Nom d'utilisateur..." class="form-control" ng-model="user.username" required>
+			                        	<input type="text" name="username" placeholder="Email" class="form-control" ng-model="user.username" required>
                                         <div ng-messages="loginForm.username.$error" ng-show="loginForm.username.$touched">
-                                            <p class="help-block" ng-message="required">Veuillez enter votre nom d'utilisateur</p>
+                                            <p class="help-block" ng-message="required">Please enter your email.</p>
                                         </div>
 			                        </div>
 
                                     <!-- PASSWORD -->
 			                        <div class="form-group" ng-class="{ 'has-error' : loginForm.password.$invalid && loginForm.password.$touched }">
-			                        	<input type="password" name="password" placeholder="Mot de passe..." class="form-control" ng-model="user.password"required>
+			                        	<input type="password" name="password" placeholder="Password" class="form-control" ng-model="user.password" required>
                                         <div ng-messages="loginForm.password.$error" ng-show="loginForm.password.$touched">
-                                            <p class="help-block" ng-message="required">Veuillez entrer votre mot de passe</p>
+                                            <p class="help-block" ng-message="required">Please enter your password.</p>
                                         </div>
 			                        </div>
 
@@ -56,7 +56,7 @@
                                     </div>
 
                                     <!-- VALIDATION -->
-			                        <button type="submit" class="btn" >Connexion</button>
+			                        <button type="submit" class="btn">Sign in</button>
 
                                 </form>
 		                    </div>
@@ -64,17 +64,11 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 social-login">
-                        	<h3>...ou:</h3>
+                        	<h3>...or:</h3>
                         	<div class="social-login-buttons">
 	                            <a class="btn btn-link-2" href="#/createaccount">
-	                        		Créez un compte
+	                        		Create an account
 	                        	</a>
-	                        	<!-- <a class="btn btn-link-2" href="#">
-	                        		<i class="fa fa-twitter"></i> Twitter
-	                        	</a> -->
-	                        	<!-- <a class="btn btn-link-2" href="#">
-	                        		<i class="fa fa-google-plus"></i>Utilisez Google Plus
-	                        	</a> -->
                         	</div>
                         </div>
                     </div>
