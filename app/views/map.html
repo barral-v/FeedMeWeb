@@ -10,7 +10,7 @@
                     <!-- button -->
                     <div class="row">
                         <div class="col-sm-2 col-sm-offset-10">
-                            <a class="btn btn-success" href="#/createdish" role="button">Créez une offre</a>
+                            <a class="btn btn-success" href="#/createdish" role="button">Create a listing</a>
                         </div>
                     </div>
                     <div class="row">
@@ -21,7 +21,7 @@
 
                     <div class="row">
                         <div class="text-center">
-                            <h2>Choisissez un plat près de chez vous :</h2>
+                            <h2>Choose a dish near you :</h2>
                         </div>
                     </div>
 
@@ -31,8 +31,8 @@
                                     <div style="padding: 20px;text-align: center">
                                         <p>{{selectedDish.Name}}</p>
                                         <p>{{selectedDish.Price}} €</p>
-                                        <p>{{selectedDish.NbPart}} parts</p>
-                                        <p><a href="/#/detaildish/{{selectedDish.DishId}}">Voir les details</a></p>
+                                        <p>{{selectedDish.NbPart}} servings</p>
+                                        <p><a href="/#/detaildish/{{selectedDish.DishId}}">See details</a></p>
                                     </div>
                                 </ui-gmap-window>
                                 <ui-gmap-marker idKey='0' options='selfMarker.options' coords='selfMarker.coords'></ui-gmap-marker>
