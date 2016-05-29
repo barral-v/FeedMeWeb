@@ -11,7 +11,7 @@
 
                         <div class="row">
                             <div class="text-center">
-                                <h2>Creez un nouveau plat</h2>
+                                <h2>Create a new listing</h2>
                             </div>
                         </div>
 
@@ -29,9 +29,9 @@
 
                                 <!-- DISH NAME -->
                                 <div class="form-group col-sm-12" ng-class="{ 'has-error' : dishForm.name.$invalid && dishForm.name.$touched }">
-                                    <input type="text" name="name" placeholder="Nom" class="form-control" ng-model="dish.Name" required>
+                                    <input type="text" name="name" placeholder="Dish name" class="form-control" ng-model="dish.Name" required>
                                     <div ng-messages="dishForm.name.$error" ng-show="dishForm.name.$touched">
-                                        <p class="help-block" ng-message="required">Veuillez donner un nom à votre plat</p>
+                                        <p class="help-block" ng-message="required">Please name your listing.</p>
                                     </div>
                                 </div>
 
@@ -39,53 +39,53 @@
                                 <div class="form-group col-sm-12" ng-class="{ 'has-error' : dishForm.description.$invalid && dishForm.description.$touched }">
                                     <textarea style="height: 100px" name="description" placeholder="Description" class="form-control" ng-model="dish.Description" required></textarea>
                                     <div ng-messages="dishForm.description.$error" ng-show="dishForm.description.$touched">
-                                        <p class="help-block" ng-message="required">Decrivez votre plat</p>
+                                        <p class="help-block" ng-message="required">Describe your dish.</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH PRICE -->
                                 <div class="form-group col-sm-4" ng-class="{ 'has-error' : dishForm.price.$invalid && dishForm.price.$touched }">
-                                    <input type="number" name="price" placeholder="Prix par part" class="form-control" ng-model="dish.Price" required>
+                                    <input type="number" name="price" placeholder="Price per serving" class="form-control" ng-model="dish.Price" required>
                                     <div ng-messages="dishForm.price.$error" ng-show="dishForm.price.$touched">
-                                        <p class="help-block" ng-message="required">Donnez un prix par part à votre plat</p>
+                                        <p class="help-block" ng-message="required">Please give a price per serving to your dish.</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH NB PIECE -->
                                 <div class="form-group col-sm-4" ng-class="{ 'has-error' : dishForm.nbPiece.$invalid && dishForm.nbPiece.$touched }">
-                                    <input type="number" name="nbPiece" placeholder="Nombre de parts" class="form-control" ng-model="dish.NbPart" required>
+                                    <input type="number" name="nbPiece" placeholder="Number of servings" class="form-control" ng-model="dish.NbPart" required>
                                     <div ng-messages="dishForm.nbPiece.$error" ng-show="dishForm.nbPiece.$touched">
-                                        <p class="help-block" ng-message="required">Combien de part mettez vous en vente</p>
+                                        <p class="help-block" ng-message="required">Please specify how many servings you are selling.</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH SIZE PIECE -->
                                 <div class="form-group col-sm-4" ng-class="{ 'has-error' : dishForm.sizePiece.$invalid && dishForm.sizePiece.$touched }">
-                                    <input type="number" name="sizePiece" placeholder="Taille d'une part" class="form-control" ng-model="dish.SizePart" required>
+                                    <input type="number" name="sizePiece" placeholder="Size of a serving" class="form-control" ng-model="dish.SizePart" required>
                                     <div ng-messages="dishForm.sizePiece.$error" ng-show="dishForm.sizePiece.$touched">
-                                        <p class="help-block" ng-message="required">Donnez la quantité d'une part de votre plat</p>
+                                        <p class="help-block" ng-message="required">Please specify a serving size.</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH ADDRESS ROAD -->
                                 <div class="form-group col-sm-6" ng-class="{ 'has-error' : dishForm.address.$invalid && dishForm.address.$touched }">
-                                    <input type="text" name="address" placeholder="Adresse" class="form-control" ng-model="dish.Address.Road" required>
+                                    <input type="text" name="address" placeholder="Address" class="form-control" ng-model="dish.Address.Road" required>
                                     <div ng-messages="dishForm.address.$error" ng-show="dishForm.address.$touched">
-                                        <p class="help-block" ng-message="required">Veuillez entrer une adresse où venir cherchre votre plat</p>
+                                        <p class="help-block" ng-message="required">Please enter an address to pick up your dish from.</p>
                                     </div>
                                 </div>
 
                                 <!-- DISH ADDRESS ZIP -->
                                 <div class="form-group col-sm-6" ng-class="{ 'has-error' : dishForm.zip.$invalid && dishForm.zip.$touched }">
-                                    <input type="text" name="zip" placeholder="ZIP Code" class="form-control" ng-model="dish.Address.PostalCode" required>
+                                    <input type="text" name="zip" placeholder="Postal Code" class="form-control" ng-model="dish.Address.PostalCode" required>
                                     <div ng-messages="dishForm.zip.$error" ng-show="dishForm.zip.$touched">
-                                        <p class="help-block" ng-message="required">Please enter a ZIP Code</p>
+                                        <p class="help-block" ng-message="required">Please enter a postal code</p>
                                     </div>
                                 </div>
 
                                 <!-- DAYS -->
                                 <div class="form-group col-sm-12" ng-class="{ 'red-border' : daysError }">
-                                    <div class="col-sm-12">Choose your disponibility day(s)</div>
+                                    <div class="col-sm-12">Choose your available day(s)</div>
                                     <div class="col-sm-offset-3 col-sm-1">
                                         <input type="checkbox" class="form-control" ng-model="monday">
                                         <span>Monday</span>
@@ -115,25 +115,25 @@
                                         <span>Sunday</span>
                                     </div>
                                     <div class="col-sm-12" ng-show="daysError">
-                                        <p class="help-block red">Please choose at least a day</p>
+                                        <p class="help-block red">Please choose at least a day.</p>
                                     </div>
                                 </div>
 
                                 <!-- ENDDATE -->
                                 <div class="form-group col-sm-12">
-                                    <div class="col-sm-6">Choisissez la date à laquelle votre plat ne sera plus disponible</div>
+                                    <div class="col-sm-6">Choose the date at which your dish won't be avalaible anymore.</div>
                                     <uib-datepicker class="col-sm-6" name="validateDate" ng-model="dish.DateExpiration" class="well well-sm" datepicker-options="dateOptions" required></uib-datepicker>
                                 </div>
 
                                 <!-- PICKUPSTARTTIME -->
                                 <div class="col-sm-12 form-group">
-                                    <div class="col-sm-6">Heure de début de disponibilité de votre plat</div>
+                                    <div class="col-sm-6">Time for start of availability.</div>
                                     <uib-timepicker class="col-sm-3" name="validateTime" ng-model="dish.PickUpStartTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
                                 </div>
 
                                 <!-- PICKUPENDTIME-->
                                 <div class="col-sm-12 form-group">
-                                    <div class="col-sm-6">Heure de fin de disponibilité de votre plat</div>
+                                    <div class="col-sm-6">Time for end of availability.</div>
                                     <uib-timepicker class="col-sm-3" name="endTime" ng-model="dish.PickUpEndTime" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
                                 </div>
 
@@ -143,16 +143,11 @@
 
                                 <!-- VALIDATION -->
                                 <div class="col-sm-12">
-                                    <button  type="submit" class="btn" >Valider</button>
+                                    <button  type="submit" class="btn">Submit</button>
                                 </div>
                                 
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-sm-12">
-                            </div>
-                        </div>                    
+                        </div>              
                     </form>
                 </div>
             </div>
