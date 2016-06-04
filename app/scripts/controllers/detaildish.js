@@ -54,6 +54,7 @@
 				    $scope.sunday = dish.Days.charAt(6) === "1" ? true : false;
 				}
 			    $scope.dateOptions.maxDate = $scope.dish.DateExpiration;
+			    $scope.image = dish.Images[0].Path;
 				$scope.nbPartChange = function(){
 					$scope.priceTotal = $scope.nbPart * $scope.dish.Price;
 					if (!$scope.priceTotal){

@@ -9,8 +9,8 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <div class="row">
-                                <div class="col-sm-3" style="height:200px; border: 1px solid black;">
-                                    <img src="{{dish.Image}}" alt="img">
+                                <div class="col-sm-3">
+                                    <img ng-src="{{image}}" alt="img">
                                 </div>
 
                                 <div class="col-sm-9">
@@ -23,7 +23,7 @@
                                 </div>                                
                             </div>
 
-                            <div class="row">
+                            <div class="row" style="padding-top: 15px;">
                                 <div class="col-sm-4 text-center">
                                     <span class="dish-description">{{dish.Price}} € per serving</span>
                                 </div>
@@ -64,6 +64,9 @@
                                         <input type="checkbox" class="form-control" ng-model="sunday" disabled>
                                         <span>Sunday</span>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <span> from {{dish.PickUpStartTime | date:"HH:mm"}} to {{dish.PickUpEndTime | date:"HH:mm"}}</span><br>
+                                    </div>
                                 </div>
                         </div>
                     </div>
@@ -73,7 +76,7 @@
                             <div class="row">
                                 <!-- NB PART -->
                                 <div class="col-sm-6 form-group" ng-class="{ 'has-error' : dishForm.nbPart.$invalid && dishForm.nbPart.$touched }">
-                                    <input type="number" name="nbPart" placeholder="Number of servings wanted" class="form-control" ng-model="nbPart" ng-change="nbPartChange()" max="{{dish.NbPart}}" required>
+                                    <input type="number" name="nbPart" placeholder="Number of servings wanted" class="form-control" ng-model="nbPart" ng-change="nbPartChange()" min="0" max="{{dish.NbPart}}" required>
                                     <div ng-messages="dishForm.nbPart.$error" ng-show="dishForm.nbPart.$touched">
                                         <p class="help-block" ng-message="required">Please set a number of servings.</p>
                                         <p class="help-block" ng-message="max">You can't order more than {{dish.NbPart}}</p>
