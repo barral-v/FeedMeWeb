@@ -152,7 +152,7 @@
             $http(request).then(function successCallback(response) {
                 response = response;
                 $scope.alerts.push({ type: 'success', msg: 'You have refused this order' });
-                $timeout(function() { $route.reload(); }, 2500);$route.reload();
+                $timeout(function() { $route.reload(); }, 2500);
             }, function errorCallback(response) {
               var message = response.data.Message;
               if (message !== "The request is invalid."){
@@ -174,9 +174,9 @@
             });
         };
 
-        $scope.doneButton = function(model){
+        $scope.doneButton = function(model, validationCode){
             var url = 'http://163.5.84.232/WebService/api/Orders/Done?id=';
-            url += String(model.OrderId) + "&validationCode=" + String(model.ValidationCode);
+            url += String(model.OrderId) + "&validationCode=" + String(validationCode);
 
             var request = {
               method: 'POST',
@@ -189,7 +189,7 @@
             $http(request).then(function successCallback(response) {
                 response = response;
                 $scope.alerts.push({ type: 'success', msg: 'You have completed this order' });
-                $timeout(function() { $route.reload(); }, 2500);$route.reload();
+                $timeout(function() { $route.reload(); }, 2500);
             }, function errorCallback(response) {
               var message = response.data.Message;
               if (message !== "The request is invalid."){

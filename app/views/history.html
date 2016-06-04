@@ -27,6 +27,7 @@
 					<td>{{ model.DateCreate | date:"dd LLLL yyyy" }}</td>
 					<td>
 						<button ng-click="cancelButton(model)" ng-show="model.Statut == 'In progress' || model.Statut == 'Accept'">Cancel</button>
+						<span ng-show="model.Statut == 'Accept'"><br/>Validation Code: {{model.ValidationCode}}</span>
 					</td>
 				</tr>
 			</tbody>
@@ -67,12 +68,13 @@
 				<tr ng-repeat="model in sellList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.Dish.DishId}}">{{ model.Dish.Name }}</a></td>
-					<td>{{ model.Dish.DateCreate | date:"dd LLLL yyyy" }}</td>
+					<td>{{ model.DateCreate | date:"dd LLLL yyyy" }}</td>
 					<td>
 						<button ng-click="acceptButton(model)" ng-show="model.Statut == 'In progress'">Accept</button>
 						<button ng-click="refuseButton(model)" ng-show="model.Statut == 'In progress'">Refuse</button>
 						<button ng-click="cancelButton(model)" ng-show="model.Statut == 'Accept'">Cancel</button>
-						<button ng-click="doneButton(model)" ng-show="model.Statut == 'Accept'">Done</button>
+						<input type="text" placeholder="Validation Code" class="form-control" ng-model="validationCode" ng-show="model.Statut == 'Accept'">
+						<button ng-click="doneButton(model, validationCode)" ng-show="model.Statut == 'Accept'">Done</button>
 					</td>
 				</tr>
 			</tbody>
