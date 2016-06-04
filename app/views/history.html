@@ -24,7 +24,7 @@
 			<tr ng-repeat="model in buyList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.Dish.DishId}}">{{ model.Dish.Name }}</a></td>
-					<td>{{ model.DateCreate }}</td>
+					<td>{{ model.DateCreate | date:"dd LLLL yyyy" }}</td>
 					<td>
 						<button ng-click="cancelButton(model)" ng-show="model.Statut == 'In progress' || model.Statut == 'Accept'">Cancel</button>
 					</td>
@@ -67,7 +67,7 @@
 				<tr ng-repeat="model in sellList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.Dish.DishId}}">{{ model.Dish.Name }}</a></td>
-					<td>{{ model.Dish.DateCreate }}</td>
+					<td>{{ model.Dish.DateCreate | date:"dd LLLL yyyy" }}</td>
 					<td>
 						<button ng-click="acceptButton(model)" ng-show="model.Statut == 'In progress'">Accept</button>
 						<button ng-click="refuseButton(model)" ng-show="model.Statut == 'In progress'">Refuse</button>
