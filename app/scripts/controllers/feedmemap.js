@@ -116,7 +116,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
     
             var dish = data[i];
 
-            if (dish.Statut === "In progress"){
+            if (dish.Statut === "In progress" && dish.Address.Road !== null){
 
                 var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
                 geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA";
