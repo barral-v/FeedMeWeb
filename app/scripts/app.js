@@ -86,6 +86,7 @@ angular
     $scope.logout = function(){
         if ($cookies.get("feedmetoken")){ 
             $cookies.remove("feedmetoken");
+            $cookies.remove("feedmeid");
             $rootScope.userConnected = false;
         }
     };

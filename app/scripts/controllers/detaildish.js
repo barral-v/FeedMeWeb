@@ -39,6 +39,7 @@
 			    	startingDay: 1
 			    };
 			$scope.priceTotal = 0;
+			$scope.canCancel = false;
 
 		    $http(request).then(function successCallback(response) {
 
@@ -53,6 +54,9 @@
 				    $scope.saturday = dish.Days.charAt(5) === "1" ? true : false;
 				    $scope.sunday = dish.Days.charAt(6) === "1" ? true : false;
 				}
+				if (dish.UserId === $cookies.get("feedmeid")){
+					$scope.canCancel = true;
+				}
 			    $scope.dateOptions.maxDate = $scope.dish.DateExpiration;
 			    $scope.image = dish.Images[0].Path;
 				$scope.nbPartChange = function(){
@@ -61,6 +65,41 @@
 						$scope.priceTotal = 0;
 					}
 				};
+				$scope.dishCancel = function(){
+			    	var url3 = 'http://163.5.84.232/WebService/api/Dishes/Cancel?id=' + $scope.dish.DishId;
+
+				 	$http({
+				 		method: 'POST',
+				 		url: url3,
+				 		headers: {
+				            // 'Content-Type': 'multipart/form-data',
+				            'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+				        }
+				    }).then(function successCallback(response) {
+			    			response = response;
+			    			$scope.alerts.push({ type: 'success', msg: 'Your offer has been canceled' });
+				            $timeout(function() { $location.path('/map').replace(); }, 5000);
+		    		}, function errorCallback(response) {
+			            var message = response.data.Message;
+			            if (message !== "The request is invalid."){
+				        	$scope.errorMessage = message;
+				        }
+			          	else{
+			        	    var modelState = response.data.ModelState;
+				            var error_list = "";
+				            for (var key in modelState) {
+				              	if (modelState.hasOwnProperty(key)) {
+				                	for (var i = modelState[key].length - 1; i >= 0; i--) {
+				                    	error_list += modelState[key][i];
+				                    	error_list += "\n";
+				                	}
+				              	}
+				            }
+				            $scope.errorMessage = error_list;
+			            }
+			        });
+
+			    };
 
 		    }, function errorCallback(response) {
 	            var message = response.data.Message;
@@ -81,8 +120,6 @@
 		            $scope.errorMessage = error_list;
 	            }
 	        });
-
-		    
 
 		    // function to submit the form after all validation has occurred            
 		    $scope.submitForm = function(isValid) {

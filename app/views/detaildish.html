@@ -121,8 +121,13 @@
 
                             <!-- VALIDATION -->
                             <div class="row">
-                                <button type="submit" class="btn" >Submit</button>
-                            </div>        
+                                <button type="submit" class="btn" >Place an order</button>
+                            </div>
+
+                            <!-- CANCEL -->
+                            <div class="row" ng-if="canCancel" style="padding-top: 30px;">
+                                <button ng-click="dishCancel()" class="btn" >Cancel my offer</button>
+                            </div> 
 
                         </form>  
                     </div>
