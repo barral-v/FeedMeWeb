@@ -1,5 +1,6 @@
-.green{
-	background-color: #2A8E20 !important;
+.grey{
+	background-color: #454545 !important;
+        -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
 }
 
 .red{
