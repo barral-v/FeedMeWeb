@@ -229,6 +229,20 @@
             createBuyList(buy["In progress"]);
             createBuyList(buy.Refuse);
 
+            var url2 = 'http://163.5.84.232/WebService/api/Dishes/GetDishesFromUserId?id=';
+            url2 += $cookies.get("feedmeid");
+            var request2 = {
+                method: 'GET',
+                url: url2,
+                headers: {
+                    'Authorization': 'Bearer '+ $cookies.get("feedmetoken"),
+                }
+            };
+
+            $http(request2).then(function successCallback(response) {
+                $scope.myDishList = response.data;
+            }, function errorCallback(response) {});
+
         }, function errorCallback(response) {
 
             var message = response.data.Message;

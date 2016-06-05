@@ -82,5 +82,31 @@
 		</table>
 
 	</div>
+
+	<div class="col-sm-12">
+		<h3>My Dishes</h3>
+		<table class="table table-bordered" style="background: white">
+
+			<thead>
+				<tr>
+					<td>
+						Dish name
+					</td>
+					<td>
+						Creation date
+					</td>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr ng-repeat="model in myDishList track by model.DishId">
+					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Name }}</a></td>
+					<td>{{ model.DateCreate | date:"dd LLLL yyyy" }}</td>
+				</tr>
+			</tbody>
+
+		</table>
+
+	</div>
 	
 
