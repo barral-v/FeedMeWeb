@@ -119,7 +119,7 @@ app.controller('MapCtrl', ['$cookies', '$scope', '$location', '$http', function 
                 if (dish.Statut === "In progress" && dish.Address.Road !== null){
 
                     var geourl = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-                    geourl += encodeURIComponent(dish.Address.Road) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA";
+                    geourl += encodeURIComponent(dish.Address.Road) + encodeURIComponent(dish.Address.PostalCode) + "&key=AIzaSyAI249RQPjq8yzY9r9I7z5NCYmNjMz9ssA";
 
                     $http.get(geourl).success((function(dish) {
                         return function(data) {

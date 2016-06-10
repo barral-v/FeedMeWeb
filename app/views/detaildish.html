@@ -101,7 +101,7 @@
 
                                 <!-- TIME -->
                                 <div class="col-sm-12 form-group" ng-class="{ 'has-error' : dishForm.validateTime.$invalid && dishForm.validateTime.$touched }">
-                                    <div class="col-sm-6">Heure de récupération du plat</div>
+                                    <div class="col-sm-6">Dish pickup hour:</div>
                                     <uib-timepicker class="col-sm-3" name="validateTime" ng-model="DateExpiration" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></uib-timepicker>
 <!--                                     <div ng-messages="dishForm.validateTime.$error" ng-show="dishForm.validateTime.$touched">
                                         <p class="help-block" ng-message="required">Donnez une heure de visite</p>
