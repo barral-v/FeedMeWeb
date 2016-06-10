@@ -11,6 +11,13 @@
  
  app.controller('DetaildishCtrl', ['$timeout', '$cookies', '$scope', '$routeParams', '$http', '$location', function ($timeout, $cookies, $scope, $routeParams, $http, $location) {
 
+ 	function getRoundDate()
+    {
+        var coeff = 1000 * 60 * 10;
+        var date = new Date();
+        return new Date(Math.round(date.getTime() / coeff) * coeff);
+    }
+
  	$scope.alerts = [];
  	if (!$cookies.get("feedmetoken")){ 
  		$location.path('/').replace(); 
@@ -29,12 +36,12 @@
 		        }
 		    };
 
-		    $scope.DateExpiration = new Date();
+		    $scope.DateExpiration = getRoundDate();
 			$scope.hstep = 1;
-		    $scope.mstep = 5;
+		    $scope.mstep = 10;
 		    $scope.ismeridian = false;
 		    $scope.dateOptions = {
-			    	minDate: new Date(),
+			    	minDate: getRoundDate(),
 			    	showWeeks: false,
 			    	startingDay: 1
 			    };

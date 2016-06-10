@@ -70,7 +70,7 @@
                                 </div>
                         </div>
                     </div>
-                    <div class="row" style="margin-top: 30px;">
+                    <div ng-if='!canCancel && dish.Statut != "Cancel"' class="row" style="margin-top: 30px;">
                         <form name="dishForm" ng-submit="submitForm(dishForm.$valid)" novalidate>
                             <!-- button -->
                             <div class="row">
@@ -124,12 +124,13 @@
                                 <button type="submit" class="btn" >Place an order</button>
                             </div>
 
-                            <!-- CANCEL -->
-                            <div class="row" ng-if="canCancel" style="padding-top: 30px;">
-                                <button ng-click="dishCancel()" class="btn" >Cancel my offer</button>
-                            </div> 
+                             
 
                         </form>  
+                    </div>
+                    <!-- CANCEL -->
+                    <div class="row" ng-if="canCancel" style="padding-top: 30px;">
+                        <button ng-click="dishCancel()" class="btn" >Cancel my offer</button>
                     </div>
                 </div>
             </div>

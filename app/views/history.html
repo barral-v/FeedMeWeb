@@ -12,7 +12,10 @@
 						Dish name
 					</td>
 					<td>
-						Creation date
+						Pickup Time
+					</td>
+					<td>
+						Seller Phone
 					</td>
 					<td>
 						Action
@@ -24,7 +27,10 @@
 			<tr ng-repeat="model in buyList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.Dish.DishId}}">{{ model.Dish.Name }}</a></td>
-					<td>{{ model.DateCreate | date:"dd LLLL yyyy" }}</td>
+					<td>{{ model.PickUpTime | date:"dd LLLL yyyy 'at' hh:mm" }}</td>
+					<td>
+						<span ng-show="model.Statut == 'Done' || model.Statut == 'Accept'">{{ model.UserPhone }}</span>
+					</td>
 					<td>
 						<button ng-click="cancelButton(model)" ng-show="model.Statut == 'In progress' || model.Statut == 'Accept'">Cancel</button>
 						<span ng-show="model.Statut == 'Accept'"><br/>Validation Code: {{model.ValidationCode}}</span>
@@ -56,7 +62,10 @@
 						Dish name
 					</td>
 					<td>
-						Creation date
+						Pickup Time
+					</td>
+					<td>
+						Buyer Phone
 					</td>
 					<td>
 						Action
@@ -68,7 +77,10 @@
 				<tr ng-repeat="model in sellList track by model.OrderId">
 					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.Dish.DishId}}">{{ model.Dish.Name }}</a></td>
-					<td>{{ model.Dish.DateCreate | date:"dd LLLL yyyy" }}</td>
+					<td>{{ model.PickUpTime | date:"dd LLLL yyyy 'at' hh:mm" }}</td>
+					<td>
+						<span>{{ model.UserPhone }}</span>
+					</td>
 					<td>
 						<button ng-click="acceptButton(model)" ng-show="model.Statut == 'In progress'">Accept</button>
 						<button ng-click="refuseButton(model)" ng-show="model.Statut == 'In progress'">Refuse</button>
@@ -90,6 +102,9 @@
 			<thead>
 				<tr>
 					<td>
+						Status
+					</td>
+					<td>
 						Dish name
 					</td>
 					<td>
@@ -100,6 +115,7 @@
 
 			<tbody>
 				<tr ng-repeat="model in myDishList track by model.DishId">
+					<td>{{ model.Statut }}</td>
 					<td><a href="#/detaildish/{{model.DishId}}">{{ model.Name }}</a></td>
 					<td>{{ model.DateCreate | date:"dd LLLL yyyy" }}</td>
 				</tr>

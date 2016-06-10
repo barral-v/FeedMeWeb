@@ -43,7 +43,8 @@
                     Dish: current.Dish,
                     Statut: current.Statut,
                     ValidationCode: current.ValidationCode,
-                    DateCreate: current.DateCreate,
+                    PickUpTime: current.PickUpTime,
+                    UserPhone: current.User.PhoneNumber,
                  });
             }
         };
@@ -58,7 +59,8 @@
                     Dish: current.Dish,
                     Statut: current.Statut,
                     ValidationCode: current.ValidationCode,
-                    DateCreate: current.DateCreate,
+                    PickUpTime: current.PickUpTime,
+                    UserPhone: current.User.PhoneNumber,
                  });
             }
         };

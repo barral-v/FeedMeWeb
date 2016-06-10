@@ -11,6 +11,13 @@
  
  app.controller('CreatedishCtrl', ['$timeout', '$location', '$cookies', '$http', '$scope', function ($timeout, $location, $cookies, $http, $scope) {
 
+    function getRoundDate()
+    {
+        var coeff = 1000 * 60 * 10;
+        var date = new Date();
+        return new Date(Math.round(date.getTime() / coeff) * coeff);
+    }
+
     function getDaysString(){
         var s = "";
         s += ($scope.monday ? "1" : "0");
@@ -33,13 +40,14 @@
         $scope.daysError = true;
         
         $scope.dish = {
-            DateExpiration: new Date(),
-            PickUpStartTime: new Date(),
-            PickUpEndTime: new Date()
+            DateExpiration: getRoundDate(),
+            PickUpStartTime: getRoundDate(),
+            PickUpEndTime: getRoundDate(),
+            Address: {}
             };
         
         $scope.hstep = 1;
-        $scope.mstep = 5;
+        $scope.mstep = 10;
         $scope.monday = false;
         $scope.tuesday = false;
         $scope.wednesday = false;
@@ -76,6 +84,7 @@
                 else{
                     var dish = $scope.dish;
                     dish.Days = getDaysString();
+                    dish.Address.Country = "France"
 
                     var url = 'http://163.5.84.232/WebService/api/Dishes';
 
